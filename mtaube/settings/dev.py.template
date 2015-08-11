@@ -1,0 +1,4 @@
+from mtaube.settings.base import *
+
+
+# Insert environment-specific settings here
