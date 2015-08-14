@@ -17,7 +17,7 @@ import os
 
 
 mod = __import__(
-    os.environ['ENV'],
+    os.environ['DJANGO_ENV'],
     globals(),
     locals(),
     ['settings']

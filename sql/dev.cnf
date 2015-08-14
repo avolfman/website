@@ -1,0 +1,4 @@
+[client]
+database=lacy
+host=localhost
+user=root

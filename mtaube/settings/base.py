@@ -14,10 +14,13 @@ https://github.com/mtaube/mtaube.com/blob/master/mtaube/settings/__init__.py
 
 import os
 
+# Should be dir where manage.py is located.
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)
 
-ENV = os.environ['ENV']
+ENV = os.environ['DJANGO_ENV']
 
 
 # Quick-start development settings - unsuitable for production
@@ -82,9 +85,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '%s/settings/sql/%s.cnf' % (
+            'read_default_file': os.path.join(
                 BASE_DIR,
-                ENV
+                'sql/%s.cnf' % ENV
             )
         },
     }
