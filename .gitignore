@@ -2,4 +2,5 @@
 .DS_Store
 
 mtaube/settings/dev.py
-mtaube/settings/sql/dev.cnf
+mtaube/settings/secret.py
+mtaube/settings/secret/*

@@ -1,5 +1,4 @@
-"""
-WSGI config for mtaube project.
+"""WSGI config for mtaube project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +10,9 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mtaube.settings")
+
+# Set environment variables here for them to be accessible in settings.
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mtaube.settings'
+os.environ['DJANGO_ENV'] = 'staging'
 
 application = get_wsgi_application()

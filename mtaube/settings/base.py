@@ -26,9 +26,6 @@ ENV = os.environ['DJANGO_ENV']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rpe&#y6zyl(zqr#6wz6wf*e45_*9w*18vapzx(^izx^lo30=$m'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -82,23 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mtaube.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(
-                BASE_DIR,
-                'sql/%s.cnf' % ENV
-            )
-        },
-    }
-}
+WSGI_APPLICATION = 'mtaube.wsgi.%s.application' % ENV
 
 
 # Internationalization

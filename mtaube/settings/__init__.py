@@ -6,7 +6,7 @@ settings first.
 
 For example, to use dev.py as the settings module:
 DJANGO_SETTINGS_MODULE='mtaube.settings'
-ENV='dev'
+DJANGO_ENV='dev'
 
 For more information on this topic, see
 https://code.djangoproject.com/wiki/SplitSettings
