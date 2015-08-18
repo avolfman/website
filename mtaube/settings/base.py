@@ -44,6 +44,8 @@ INSTALLED_APPS = (
 
     'django.contrib.flatpages',
     'django.contrib.sites',
+
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -96,12 +98,16 @@ USE_L10N = True
 USE_TZ = True
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+# Needed to avoid socket.error: [Errno 32] Broken pipe
+AWS_S3_HOST = 's3-us-west-1.amazonaws.com'
+AWS_PRELOAD_METADATA = True
+AWS_QUERYSTRING_AUTH = False
+
+
 # Sites / Flatpages
 # https://docs.djangoproject.com/en/1.8/ref/contrib/flatpages/
 
 SITE_ID = 1
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-STATIC_URL = '/static/'
