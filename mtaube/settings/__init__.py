@@ -5,10 +5,11 @@ environment variables. All environment-specific modules should import base
 settings first.
 
 For example, to use dev.py as the settings module:
+
 DJANGO_SETTINGS_MODULE='mtaube.settings'
 DJANGO_ENV='dev'
 
-For more information on this topic, see
+For more information on this topic, see:
 https://code.djangoproject.com/wiki/SplitSettings
 https://code.djangoproject.com/wiki/SplitSettings#DevelopmentMachineDependantSettingsConfiguration
 """

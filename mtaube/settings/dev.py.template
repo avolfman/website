@@ -1,3 +1,15 @@
+"""Example Django settings for the dev environment.
+
+Use this file as a template to hold any dev-specific settings, which should not
+be checked into a VCS. Just copy this file, edit the settings, and remove the
+.template file extension.
+
+Inherits the base settings and dev-specific secret settings.
+Used as DJANGO_SETTINGS_MODULE whenever:
+
+DJANGO_ENV='dev'
+"""
+
 from mtaube.settings.base import *
 
 try:
@@ -5,6 +17,10 @@ try:
 except ImportError:
     pass
 
+
+# General Settings
+
+DEBUG = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
