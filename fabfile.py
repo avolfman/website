@@ -126,6 +126,7 @@ def deploy(minor='True'):
         install_requirements()
         migrate()
 
+    buildstatic()
     collectstatic()
     bounce()
 
