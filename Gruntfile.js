@@ -19,6 +19,44 @@ module.exports = function (grunt) {
                 ]
             },
         },
+        modernizr: {
+            dist: {
+                'devFile': 'remote',
+
+                // Path to save out the built file.
+                'outputFile': BASE_URL_BUILT_JS + 'lib/modernizr.js',
+                'extra': {
+                    'shiv': true,
+                    'printshiv': false,
+                    'load': false,
+                    'mq': true,
+                    'cssclasses': true,
+                },
+                'extensibility': {
+                    'addtest': false,
+                    'prefixed': false,
+                    'teststyles': false,
+                    'testprops': false,
+                    'testallprops': false,
+                    'hasevents': false,
+                    'prefixes': false,
+                    'domprefixes': false,
+                    // 'cssclassprefix': ''
+                },
+                'uglify': true,
+                'tests': [
+                    'csstransforms',
+                    'csstransforms3d',
+                    'csstransitions',
+                    'prefixed',
+                    'opacity',
+                    'touch'
+                ],
+                'parseFiles': false,
+                'matchCommunityTests': false,
+                'customTests': []
+            }
+        },
         requirejs: {
             options: {
                 baseUrl: BASE_URL_JS,
@@ -42,11 +80,13 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-modernizr');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', [
         'less',
+        'modernizr',
         'requirejs',
     ]);
 

@@ -14,7 +14,21 @@
 
 """Django context processors for mtaube project."""
 
+from mtaube.apps.common.conf import MODERNIZR_BUILD
 from mtaube.apps.common.conf import REQUIREJS_BUILD
+
+
+def modernizr(request):
+    """Adds RequireJS-related context variables to the context."""
+    path = 'js/lib/modernizr.js'
+
+    if MODERNIZR_BUILD:
+        path = 'built/' + path
+
+    return {
+        'MODERNIZR_BUILD': MODERNIZR_BUILD,
+        'MODERNIZR_PATH': path
+    }
 
 
 def requirejs(request):

@@ -91,6 +91,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'mtaube.apps.common.context_processors.modernizr',
                 'mtaube.apps.common.context_processors.requirejs',
             ],
         },
