@@ -25,10 +25,13 @@ Using virtualenv and virtualenvwrapper is highly recommended. The virtualenv can
     git clone git@github.com:mtaube/mtaube.com.git .
     ```
 
-3. Install the [Python required packages](requirements.txt)
+3. Install the [Python required packages](requirements.txt) and [Node required packages](requirements--node.txt)
 
     ```
     pip install -r requirements.txt
+
+    nodeenv --python-virtualenv --requirements=requirements--node.txt
+    npm install
     ```
 
 4. Configure Django settings

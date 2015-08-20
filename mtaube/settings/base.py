@@ -118,6 +118,13 @@ AWS_QUERYSTRING_AUTH = False
 # Needed to avoid socket.error: [Errno 32] Broken pipe
 AWS_S3_HOST = 's3-us-west-1.amazonaws.com'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Sites / Flatpages
 # https://docs.djangoproject.com/en/1.8/ref/contrib/flatpages/
