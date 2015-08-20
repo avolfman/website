@@ -134,6 +134,8 @@ def deploy(minor='True'):
 def install_requirements():
     """Installs project requirements using pip."""
     _run('pip install -r requirements.txt')
+    _run('nodeenv -p --requirements=requirements--node.txt --update')
+    _run('npm install')
 
 
 @runs_once

@@ -36,7 +36,7 @@ Using virtualenv and virtualenvwrapper is highly recommended. The virtualenv can
 
 4. Configure Django settings
 
-    Settings can be configured on a per-environment basis. There has been [much discussion](https://code.djangoproject.com/wiki/SplitSettings) on the best way to do it, see the [settings module initialization](mtaube/settings/__init__.py) for this project's implementation and required environment variables. It is recommended to set and unset the variables in the ``activate`` hook provided by virtualenv.
+    Settings can be configured on a per-environment basis. There has been [much discussion](https://code.djangoproject.com/wiki/SplitSettings) on the best way to do it, see the [settings module initialization](mtaube/settings/__init__.py) for this project's implementation and required environment variables. It is recommended to set and unset the variables in the ``activate`` hook provided by [virtualenv](https://virtualenv.pypa.io/en/latest/).
 
     See [Django's settings documentation](https://docs.djangoproject.com/en/1.8/ref/settings/) for all possible configurations.
 
@@ -44,4 +44,28 @@ Using virtualenv and virtualenvwrapper is highly recommended. The virtualenv can
 
     ```
     python manage.py migrate
+    ```
+
+## Development
+
+- Run Django's development server
+
+    ```
+    python manage.py runserver
+    ```
+
+- Automatically compile LESS files on save
+
+    ```
+    grunt watch
+    ```
+
+## Deployment
+
+All deployment-related tasks are handled using [Fabric](http://docs.fabfile.org/en/1.8/). See the [fabfile](fabfile.py) for the predefined commands.
+
+- To deploy an update to the staging or production environments
+
+    ```
+    fab -R staging deploy
     ```

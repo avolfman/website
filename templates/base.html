@@ -14,5 +14,20 @@
     </head>
     <body>
         {% block content %}{% endblock %}
+
+        {% if REQUIREJS_BUILD %}
+            <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>
+        {% else %}
+            <script type="text/javascript">
+                var require = {
+                    baseUrl: "{% static 'js' %}",
+                };
+            </script>
+            <script type="text/javascript" src="{% static 'js/lib/require.js' %}"></script>
+        {% endif %}
+
+        <script type="text/javascript">
+            require(['main']);
+        </script>
     </body>
 </html>

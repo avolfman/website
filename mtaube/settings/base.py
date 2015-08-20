@@ -90,6 +90,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'mtaube.apps.common.context_processors.requirejs',
             ],
         },
     },
@@ -126,8 +128,3 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
-
-# Sites / Flatpages
-# https://docs.djangoproject.com/en/1.8/ref/contrib/flatpages/
-
-SITE_ID = 1
