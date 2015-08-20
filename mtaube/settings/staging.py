@@ -30,6 +30,8 @@ except ImportError:
 
 # General Settings
 
+ALLOWED_HOSTS = ['staging.mtaube.com']
+
 DEBUG = True
 
 HOSTS = ['ubuntu@54.153.8.86']
@@ -38,13 +40,14 @@ HOSTS = ['ubuntu@54.153.8.86']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+AWS_S3_CUSTOM_DOMAIN = 'storage.staging.mtaube.com'
 AWS_STORAGE_BUCKET_NAME = 'storage.staging.mtaube.com'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+DEFAULT_FILE_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 
-STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'http://storage.staging.mtaube.com/'
 
 
 # Sites / Flatpages

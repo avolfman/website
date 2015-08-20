@@ -34,6 +34,8 @@ except ImportError:
 
 # General Settings
 
+ALLOWED_HOSTS = ['localhost']
+
 DEBUG = True
 
 # Static files (CSS, JavaScript, Images)
