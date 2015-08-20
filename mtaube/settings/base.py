@@ -90,6 +90,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'mtaube.apps.common.context_processors.modernizr',
+                'mtaube.apps.common.context_processors.requirejs',
             ],
         },
     },
@@ -117,9 +120,12 @@ AWS_PRELOAD_METADATA = True
 AWS_QUERYSTRING_AUTH = False
 # Needed to avoid socket.error: [Errno 32] Broken pipe
 AWS_S3_HOST = 's3-us-west-1.amazonaws.com'
+AWS_S3_SECURE_URLS = False
 
-
-# Sites / Flatpages
-# https://docs.djangoproject.com/en/1.8/ref/contrib/flatpages/
-
-SITE_ID = 1
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)

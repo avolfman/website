@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -7,8 +9,27 @@
 
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'built/css/main.css' %}">
+
+        <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
         {% block content %}{% endblock %}
+
+        {% if REQUIREJS_BUILD %}
+            <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>
+        {% else %}
+            <script type="text/javascript">
+                var require = {
+                    baseUrl: "{% static 'js' %}",
+                };
+            </script>
+            <script type="text/javascript" src="{% static 'js/lib/require.js' %}"></script>
+        {% endif %}
+
+        <script type="text/javascript">
+            require(['main']);
+        </script>
     </body>
 </html>

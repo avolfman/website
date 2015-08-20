@@ -3,4 +3,8 @@
 
 mtaube/settings/dev.py
 mtaube/settings/secret.py
-mtaube/settings/secret/*
+mtaube/settings/secret/
+
+node_modules/
+
+static/built/

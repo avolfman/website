@@ -89,6 +89,16 @@ def bounce():
     sudo('service apache2 restart')
 
 
+@runs_once
+@task
+def buildstatic():
+    """Runs the build command from the Gruntfile.
+
+    Compiles the LESS files.
+    """
+    _run('grunt build')
+
+
 @task
 def clear_cache():
     """Clears the cached .pyc files."""
@@ -116,6 +126,7 @@ def deploy(minor='True'):
         install_requirements()
         migrate()
 
+    buildstatic()
     collectstatic()
     bounce()
 
@@ -124,6 +135,8 @@ def deploy(minor='True'):
 def install_requirements():
     """Installs project requirements using pip."""
     _run('pip install -r requirements.txt')
+    _run('nodeenv -p --requirements=requirements--node.txt --update')
+    _run('npm install')
 
 
 @runs_once
