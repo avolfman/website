@@ -15,7 +15,14 @@
         <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
-        {% block content %}{% endblock %}
+        <div id="l_wrapper" class="g-wrapper">
+            <div class="g-col g-col--smMin-6 l-panel">
+                {% block content %}{% endblock %}
+            </div>
+            <div class="g-col g-col--smMin-6 l-panel">
+
+            </div>
+        </div>
 
         {% if REQUIREJS_BUILD %}
             <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>
