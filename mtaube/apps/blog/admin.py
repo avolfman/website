@@ -12,15 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
 from django.contrib import admin
+from django import forms
+
+from mtaube.apps.blog.models import Post
 
 
-urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
-    url(r'^words/', include('mtaube.apps.blog.urls')),
+class PostForm(forms.ModelForm):
 
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    class Meta:
+        exclude = ['slug']
+        model = Post
+
+
+class PostAdmin(admin.ModelAdmin):
+    exclude = ['slug']
+    form = PostForm
+    list_display = [
+        'title',
+        'date',
+        'is_active',
+    ]
+
+
+admin.site.register(Post, PostAdmin)

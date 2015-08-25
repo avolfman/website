@@ -20,17 +20,17 @@ register = template.Library()
 
 
 @register.simple_tag
-def is_active(request, pattern):
+def is_active(request, view_name):
     """
-    Checks whether the current URL matches a URL pattern.
+    Checks whether the current request path resolves to a given view_name.
 
     Args:
         request: (HttpRequest) instance
-        pattern: (string) URL pattern to match
+        view_name: (string) the view name to reverse
 
     Returns:
         (string) 'is-active' or ''
     """
-    if request.path == reverse(pattern):
+    if reverse(view_name) in request.path:
         return 'is-active'
     return ''

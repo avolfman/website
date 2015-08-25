@@ -6,7 +6,7 @@
             <li class="is-active"><a href="{% url 'home' %}"><span>Matt Taube</span></a></li>
         {% endif %}
         <li class="{% is_active request 'profile' %}"><a href="{% url 'profile' %}"><span>Profile</span></a></li>
-        <li><a href=""><span>Words</span></a></li>
+        <li class="{% is_active request 'blog_index' %}"><a href="{% url 'blog_index' %}"><span>Words</span></a></li>
         <li><a href=""><span>Work</span></a></li>
         <li class="{% is_active request 'contact' %}"><a href="{% url 'contact' %}"><span>Contact</span></a></li>
     </ul>

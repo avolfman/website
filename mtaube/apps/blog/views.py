@@ -14,27 +14,33 @@
 
 from django.shortcuts import get_object_or_404, render
 
-from mtaube.apps.common.models import Page
+from mtaube.apps.blog.models import Post
 
 
-DEFAULT_PAGE_TEMPLATE = 'page/default.html'
-
-
-def page(request, url):
-    """View used to render flat pages (Home, Contact, etc.).
+def index(request):
+    """View used to render blog index page.
 
     Args:
         request: (HttpRequest) instance
-        url: (string) URL pattern to query Page model
 
     Returns:
         (HttpResponse) instance
     """
-    page = get_object_or_404(Page, url=url)
+    posts = Post.objects.all()
 
-    if page.template_name:
-        template = page.template_name
-    else:
-        template = DEFAULT_PAGE_TEMPLATE
+    return render(request, 'page/blog/index.html', {'posts': posts})
 
-    return render(request, template, {'page': page})
+
+def post(request, slug):
+    """View used to render blog post pages.
+
+    Args:
+        request: (HttpRequest) instance
+        slug: (string) slug to query Post model
+
+    Returns:
+        (HttpResponse) instance
+    """
+    page = get_object_or_404(Post, slug=slug)
+
+    return render(request, 'page/blog/post.html', {'page': page})

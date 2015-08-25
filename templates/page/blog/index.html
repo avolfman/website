@@ -1,0 +1,9 @@
+{% extends 'page/default.html' %}
+
+{% block content_right %}
+    <ul class="navList navList--blocks">
+        {% for post in posts %}
+            <li><a href="{% url 'blog_post' slug=post.slug %}"><span>{{ post.title }}</span></a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

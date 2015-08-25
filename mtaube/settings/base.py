@@ -59,6 +59,7 @@ INSTALLED_APPS = (
 
     'storages',
 
+    'mtaube.apps.blog',
     'mtaube.apps.common',
 )
 

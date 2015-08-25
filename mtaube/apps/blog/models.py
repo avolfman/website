@@ -12,15 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
-from django.contrib import admin
+from django.db import models
+from django.template.defaultfilters import slugify
+
+from mtaube.apps.common.models import PageAbstract
 
 
-urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
-    url(r'^words/', include('mtaube.apps.blog.urls')),
+class Post(PageAbstract):
+    date = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    slug = models.SlugField()
 
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    class Meta:
+        ordering = ['-date']
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+
+        super(Post, self).save(*args, **kwargs)
