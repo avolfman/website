@@ -39,11 +39,6 @@ class PageAbstract(models.Model):
 
 
 class Page(PageAbstract):
-    template_name = models.CharField(
-        max_length=255,
-        blank=True,
-        help_text="Example: 'page/home.html'"
-    )
     url = models.CharField(max_length=255, unique=True)
 
     def __str__(self):

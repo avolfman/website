@@ -14,11 +14,15 @@
 
 from django.conf.urls import url
 
-from mtaube.apps.common import views
+from mtaube.apps.common.views import PageView
 
 
 urlpatterns = [
-    url(r'^$', views.page, name='home'),
-    url(r'^contact/$', views.page, name='contact'),
-    url(r'^profile/$', views.page, name='profile'),
+    url(
+        r'^$',
+        PageView.as_view(template_name='page/home.html'),
+        name='home'
+    ),
+    url(r'^contact/$', PageView.as_view(), name='contact'),
+    url(r'^profile/$', PageView.as_view(), name='profile'),
 ]

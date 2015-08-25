@@ -14,10 +14,10 @@
 
 from django.conf.urls import url
 
-from mtaube.apps.portfolio import views
+from mtaube.apps.portfolio.views import IndexView, ProjectView
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='portfolio'),
-    url(r'^(?P<slug>[A-Za-z0-9_-]+)/$', views.project, name='project'),
+    url(r'^$', IndexView.as_view(), name='portfolio'),
+    url(r'^(?P<slug>[A-Za-z0-9_-]+)/$', ProjectView.as_view(), name='project'),
 ]

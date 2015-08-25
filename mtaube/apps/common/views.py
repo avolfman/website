@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from mtaube.apps.common.models import Page
 
@@ -20,21 +22,21 @@ from mtaube.apps.common.models import Page
 DEFAULT_PAGE_TEMPLATE = 'page/default.html'
 
 
-def page(request):
-    """View used to render flat pages (Home, Contact, etc.).
+class PageView(DetailView):
+    """View used to render flat pages (Home, Contact, etc.)."""
+    model = Page
+    template_name = DEFAULT_PAGE_TEMPLATE
 
-    Args:
-        request: (HttpRequest) instance
-        url: (string) URL pattern to query Page model
+    def get_object(self):
+        return get_object_or_404(Page, url=self.request.path)
 
-    Returns:
-        (HttpResponse) instance
-    """
-    page = get_object_or_404(Page, url=request.path)
 
-    if page.template_name:
-        template = page.template_name
-    else:
-        template = DEFAULT_PAGE_TEMPLATE
+class PageListView(ListView):
+    """View used to render list pages with associated flat page object."""
 
-    return render(request, template, {'page': page})
+    def get_context_data(self, **kwargs):
+        context = super(PageListView, self).get_context_data(**kwargs)
+
+        context['page'] = get_object_or_404(Page, url=self.request.path)
+
+        return context

@@ -12,40 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.shortcuts import get_object_or_404, render
+from django.views.generic.detail import DetailView
 
-from mtaube.apps.common.models import Page
+from mtaube.apps.common.views import DEFAULT_PAGE_TEMPLATE, PageListView
 from mtaube.apps.portfolio.models import Project
 
 
-def index(request):
-    """View used to render portfolio page.
-
-    Args:
-        request: (HttpRequest) instance
-
-    Returns:
-        (HttpResponse) instance
-    """
-    page = get_object_or_404(Page, url=request.path)
-    projects = Project.objects.all()
-
-    return render(request, 'page/portfolio/index.html', {
-        'page': page,
-        'projects': projects
-    })
+class IndexView(PageListView):
+    """View used to render portfolio page."""
+    model = Project
+    template_name = 'page/portfolio/index.html'
+    context_object_name = 'projects'
 
 
-def project(request, slug):
-    """View used to render project pages.
-
-    Args:
-        request: (HttpRequest) instance
-        slug: (string) slug to query Project model
-
-    Returns:
-        (HttpResponse) instance
-    """
-    page = get_object_or_404(Project, slug=slug)
-
-    return render(request, 'page/default.html', {'page': page})
+class ProjectView(DetailView):
+    """View used to render project pages."""
+    model = Project
+    context_object_name = 'page'
+    template_name = DEFAULT_PAGE_TEMPLATE
