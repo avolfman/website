@@ -1,10 +1,8 @@
 {% load nav %}
 
 <nav>
-    <ul class="navList{% if blocks %} navList--blocks{% endif %}">
-        {% if not blocks %}
-            <li class="is-active"><a href="{% url 'home' %}"><span>Matt Taube</span></a></li>
-        {% endif %}
+    <ul class="navList{% if displayAll %} navList--displayAll{% endif %}">
+        <li class="is-active"><a href="{% url 'home' %}"><span>Matt Taube</span></a></li>
         <li class="{% is_active request 'profile' %}"><a href="{% url 'profile' %}"><span>Profile</span></a></li>
         <li class="{% is_active request 'blog_index' %}"><a href="{% url 'blog_index' %}"><span>Words</span></a></li>
         <li class="{% is_active request 'portfolio' %}"><a href="{% url 'portfolio' %}"><span>Work</span></a></li>

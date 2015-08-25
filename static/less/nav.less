@@ -5,24 +5,17 @@
     list-style-type: none;
     padding: 0;
 }
-@media (min-width: @mq-smMin) {
-    .navList--blocks {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        overflow: scroll;
-    }
-}
 
 .navList > li {
     display: none;
 }
 .navList > li.is-active,
-.navList--blocks > li {
+.navList--blocks > li,
+.navList--displayAll > li {
     display: block;
 }
 .navList--blocks > li {
-    height: 25%;
+    height: 400px;
 }
 
 .navList > li > a {

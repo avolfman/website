@@ -1,5 +1,3 @@
 {% extends 'page/default.html' %}
 
-{% block content_right %}
-    {% include 'nav.html' with blocks=True %}
-{% endblock %}
+{% block nav %}{% include 'nav.html' with displayAll=True %}{% endblock %}
