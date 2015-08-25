@@ -12,14 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
 from django.contrib import admin
 
+from mtaube.apps.common.models import MediaPanel, Page
 
-urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+admin.site.register(Page)
+admin.site.register(MediaPanel)

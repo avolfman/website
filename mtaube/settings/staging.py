@@ -48,9 +48,3 @@ DEFAULT_FILE_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 STATICFILES_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 
 STATIC_URL = 'http://storage.staging.mtaube.com/'
-
-
-# Sites / Flatpages
-# https://docs.djangoproject.com/en/1.8/ref/contrib/flatpages/
-
-SITE_ID = 2

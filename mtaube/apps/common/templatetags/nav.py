@@ -12,14 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
-from django.contrib import admin
+from django import template
+from django.core.urlresolvers import reverse
 
 
-urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
+register = template.Library()
 
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+@register.simple_tag
+def is_active(request, pattern):
+    """
+    Checks whether the current URL matches a URL pattern.
+
+    Args:
+        request: (HttpRequest) instance
+        pattern: (string) URL pattern to match
+
+    Returns:
+        (string) 'is-active' or ''
+    """
+    if request.path == reverse(pattern):
+        return 'is-active'
+    return ''

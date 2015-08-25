@@ -8,6 +8,7 @@
         <title>{% block title %}{% endblock %}</title>
 
         <meta name="description" content="{% block description %}{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" type="text/css" href="{% static 'built/css/main.css' %}">
@@ -17,10 +18,11 @@
     <body>
         <div id="l_wrapper" class="g-wrapper">
             <div class="g-col g-col--smMin-6 l-panel">
-                {% block content %}{% endblock %}
+                {% include 'nav.html' %}
+                {% block content_left %}{% endblock %}
             </div>
             <div class="g-col g-col--smMin-6 l-panel">
-
+                {% block content_right %}{% endblock %}
             </div>
         </div>
 

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if page.meta_title %}
+        {{ page.meta_title }}
+    {% else %}
+        {{ page.title }}
+    {% endif %}
+{% endblock %}
+
+{% block description %}{{ page.meta_description }}{% endblock %}
+{% block keywords %}{{ page.meta_keywords }}{% endblock %}
+
+{% block content_left %}
+    {{ page.content|safe|linebreaks }}
+{% endblock %}
