@@ -8,26 +8,30 @@
 
 .navList > li {
     display: none;
+    position: relative;
 }
 .navList > li.is-active,
-.navList--blocks > li,
 .navList--displayAll > li {
     display: block;
 }
-.navList--blocks > li {
-    height: 400px;
-}
 
-.navList > li > a {
+.navList > li > a,
+.navList-link {
     text-decoration: none;
 }
-.navList--blocks > li > a {
+
+.navList-link {
+    .m-transition(background-color);
+    background-color: @color-black--opaque;
     display: table;
     height: 100%;
     width: 100%;
 }
+.no-touch .navList-link:hover {
+    background-color: @color-transparent;
+}
 
-.navList--blocks > li > a > span {
+.navList-link span {
     display: table-cell;
     vertical-align: middle;
 }

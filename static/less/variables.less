@@ -4,6 +4,13 @@
 @color-black2:  rgb(64, 64, 64); // #404040
 @color-black3:  rgb(76, 76, 76); // #4c4c4c
 
+@color-black:           @color-black1;
+@color-black--opaque:   rgba(38, 38, 38, .25);
+
+@color-transparent:     rgba(38, 38, 38, 0);
+
+@easing-default: ease-in-out;
+
 @mq-xsMax: 767px;
 @mq-smMin: (@mq-xsMax + 1);
 @mq-smMax: 1024px;
@@ -12,5 +19,8 @@
 @mq-lgMin: (@mq-mdMax + 1);
 @mq-lgMax: 1440px;
 @mq-xlMin: (@mq-lgMax + 1);
+
+@speed-default:         .2s;
+@speed-defaultDelay:    0s;
 
 @width-gutter: 0;

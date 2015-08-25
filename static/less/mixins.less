@@ -20,3 +20,11 @@
         clear: both;
     }
 }
+
+.m-transition(@property, @speed: @speed-default, @easing: @easing-default) {
+            transition: @property @speed @easing;
+    -webkit-transition: @property @speed @easing;
+       -moz-transition: @property @speed @easing;
+        -ms-transition: @property @speed @easing;
+         -o-transition: @property @speed @easing;
+}

@@ -29,8 +29,8 @@ class ProjectAdmin(admin.ModelAdmin):
     exclude = ['slug']
     form = ProjectForm
     list_display = [
-        'client_name',
         'title',
+        'client_name',
         'is_active',
         'is_locked',
         'order',
