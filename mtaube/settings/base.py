@@ -61,6 +61,7 @@ INSTALLED_APPS = (
 
     'mtaube.apps.blog',
     'mtaube.apps.common',
+    'mtaube.apps.portfolio',
 )
 
 MIDDLEWARE_CLASSES = (

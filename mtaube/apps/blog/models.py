@@ -21,7 +21,7 @@ from mtaube.apps.common.models import PageAbstract
 class Post(PageAbstract):
     date = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=255)
 
     class Meta:
         ordering = ['-date']

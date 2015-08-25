@@ -18,7 +18,7 @@ from mtaube.apps.common import views
 
 
 urlpatterns = [
-    url(r'^$', views.page, {'url': '/'}, name='home'),
-    url(r'^contact/$', views.page, {'url': '/contact/'}, name='contact'),
-    url(r'^profile/$', views.page, {'url': '/profile/'}, name='profile'),
+    url(r'^$', views.page, name='home'),
+    url(r'^contact/$', views.page, name='contact'),
+    url(r'^profile/$', views.page, name='profile'),
 ]

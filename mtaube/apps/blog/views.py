@@ -14,6 +14,7 @@
 
 from django.shortcuts import get_object_or_404, render
 
+from mtaube.apps.common.models import Page
 from mtaube.apps.blog.models import Post
 
 
@@ -26,9 +27,13 @@ def index(request):
     Returns:
         (HttpResponse) instance
     """
+    page = get_object_or_404(Page, url=request.path)
     posts = Post.objects.all()
 
-    return render(request, 'page/blog/index.html', {'posts': posts})
+    return render(request, 'page/blog/index.html', {
+        'page': page,
+        'posts': posts
+    })
 
 
 def post(request, slug):

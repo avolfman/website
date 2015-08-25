@@ -12,16 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
 from django.contrib import admin
+from django import forms
+
+from mtaube.apps.portfolio.models import Project
 
 
-urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
-    url(r'^words/', include('mtaube.apps.blog.urls')),
-    url(r'^work/', include('mtaube.apps.portfolio.urls')),
+class ProjectForm(forms.ModelForm):
 
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    class Meta:
+        exclude = ['slug']
+        model = Project
+
+
+class ProjectAdmin(admin.ModelAdmin):
+    exclude = ['slug']
+    form = ProjectForm
+    list_display = [
+        'client_name',
+        'title',
+        'is_active',
+        'is_locked',
+        'order',
+    ]
+
+
+admin.site.register(Project, ProjectAdmin)

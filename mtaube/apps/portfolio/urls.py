@@ -12,16 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf import settings
-from django.conf.urls import include, url
-from django.conf.urls.static import static
-from django.contrib import admin
+from django.conf.urls import url
+
+from mtaube.apps.portfolio import views
 
 
 urlpatterns = [
-    url(r'^', include('mtaube.apps.common.urls')),
-    url(r'^words/', include('mtaube.apps.blog.urls')),
-    url(r'^work/', include('mtaube.apps.portfolio.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^$', views.index, name='portfolio'),
+    url(r'^(?P<slug>[A-Za-z0-9_-]+)/$', views.project, name='project'),
+]
