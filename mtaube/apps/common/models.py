@@ -16,16 +16,31 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class MediaPanel(models.Model):
-    id_target = models.CharField(max_length=255, unique=True)
     bg_color = models.CharField(max_length=255, blank=True)
     bg_image = models.ImageField(upload_to='panels', blank=True)
+    id_target = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.id_target
 
 
 @python_2_unicode_compatible
 class PageAbstract(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
+    media_panels = models.ManyToManyField(
+        MediaPanel,
+        related_name='%(app_label)s_%(class)s_panels',
+        blank=True
+    )
+    media_panel_default = models.ForeignKey(
+        MediaPanel,
+        related_name='%(app_label)s_%(class)s_panel',
+        blank=True,
+        null=True
+    )
 
     meta_title = models.CharField(max_length=255, blank=True)
     meta_keywords = models.CharField(max_length=255, blank=True)

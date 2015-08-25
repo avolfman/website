@@ -22,13 +22,13 @@ from mtaube.apps.common.models import PageAbstract
 @python_2_unicode_compatible
 class Project(PageAbstract):
     client_name = models.CharField(max_length=255, blank=True)
+    github_link = models.URLField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_locked = models.BooleanField(default=True)
+    order = models.PositiveSmallIntegerField(default=0)
+    slug = models.SlugField(max_length=255)
     thumbnail = models.ImageField(upload_to='projects', blank=True)
     thumbnail_bg_color = models.CharField(max_length=255, blank=True)
-    slug = models.SlugField(max_length=255)
-    is_locked = models.BooleanField(default=True)
-    is_active = models.BooleanField(default=True)
-    github_link = models.URLField(max_length=255, blank=True)
-    order = models.PositiveSmallIntegerField(default=0)
 
     def save(self, *args, **kwargs):
         if not self.id:

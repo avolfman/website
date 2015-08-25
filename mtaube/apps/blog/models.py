@@ -22,6 +22,7 @@ class Post(PageAbstract):
     date = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     slug = models.SlugField(max_length=255)
+    thumbnail_bg_color = models.CharField(max_length=255, blank=True)
 
     class Meta:
         ordering = ['-date']
