@@ -47,6 +47,33 @@ define(
 
 function($, Backbone, _) {
 
-    console.log('Hello World!');
+    var MediaPanelView = Backbone.View.extend({
+        initialize: function (options) {
+            this.listenTo(options.mediator, 'toggle:' + this.$el.attr('id'), this.toggle);
+        },
+        toggle: function () {
+            this.$el.toggleClass('is-active');
+        },
+    });
+
+    var MediaPanelMediator = Backbone.View.extend({
+        initialize: function () {
+            this.$triggers = $('.js-mediaPanelTrigger').on('mouseenter mouseleave', $.proxy(this.announceHover, this));
+
+            $('.js-mediaPanel').each($.proxy(function (i, el) {
+                new MediaPanelView({
+                    el: el,
+                    mediator: this
+                });
+            }, this));
+        },
+        announceHover: function (event) {
+            var target = $(event.target).data('target');
+
+            this.trigger('toggle:' + $(event.target).data('target'));
+        },
+    });
+
+    if (!Modernizr.touch) new MediaPanelMediator();
 
 });

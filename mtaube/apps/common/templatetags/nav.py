@@ -22,7 +22,7 @@ register = template.Library()
 @register.simple_tag
 def is_active(request, view_name):
     """
-    Checks whether the current request path resolves to a given view_name.
+    Checks whether the current request path resolves to view_name.
 
     Args:
         request: (HttpRequest) instance
@@ -31,6 +31,24 @@ def is_active(request, view_name):
     Returns:
         (string) 'is-active' or ''
     """
-    if reverse(view_name) in request.path:
+    if reverse(view_name) == request.path:
         return 'is-active'
+    return ''
+
+
+@register.simple_tag
+def is_active_prefix(request, view_name):
+    """
+    Checks whether the current request path prefix resolves to view_name.
+
+    Args:
+        request: (HttpRequest) instance
+        view_name: (string) the view name to reverse
+
+    Returns:
+        (string) 'is-active' or ''
+    """
+    path = reverse(view_name)
+    if path in request.path and path != request.path:
+        return 'is-activePrefix'
     return ''

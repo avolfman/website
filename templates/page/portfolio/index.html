@@ -5,7 +5,7 @@
         {% for project in projects %}
             {% if not project.github_link %}
                 <li class="g-col g-col--6 g-col--mdMin-4">
-                    <div class="u-scale--1-1" style="background-color:{{ project.thumbnail_bg_color }};"></div>
+                    <div class="u-scale--1-1" style="background-color: {{ project.thumbnail_bg_color }};"></div>
                     <div class="u-stretch">
                         {% if project.is_locked %}
                             <div class="navList-link"><span>{{ project.title }}</span></div>
@@ -21,9 +21,9 @@
         {% for project in projects %}
             {% if project.github_link %}
                 <li>
-                    <div class="u-scale--1-3" style="background-color:{{ project.thumbnail_bg_color }};"></div>
+                    <div class="u-scale--1-3" style="background-color: {{ project.thumbnail_bg_color }};"></div>
                     <div class="u-stretch">
-                        <a href="{{ project.github_link }}" class="navList-link" target="_blank"><span>{{ project.title }}</span></a>
+                        <a href="{{ project.github_link }}" class="navList-link u-color--{{ post.thumbnail_font_color }}" target="_blank"><span>{{ project.title }}</span></a>
                     </div>
                 </li>
             {% endif %}

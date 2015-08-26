@@ -4,9 +4,9 @@
     <ul class="navList navList--displayAll">
         {% for post in posts %}
             <li>
-                <div class="u-scale--1-3"></div>
+                <div class="u-scale--1-3" style="background-color: {{ post.thumbnail_bg_color }};"></div>
                 <div class="u-stretch">
-                    <a href="{% url 'blog_post' slug=post.slug %}" class="navList-link"><span>{{ post.title }}</span></a>
+                    <a href="{% url 'blog_post' slug=post.slug %}" class="navList-link u-color--{{ post.thumbnail_font_color }}"><span>{{ post.title }}</span></a>
                 </div>
             </li>
         {% endfor %}

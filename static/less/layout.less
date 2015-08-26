@@ -3,12 +3,23 @@
 .l-panel {
 
 }
+.l-panelFixed--right {
+    height: 200px;
+    position: relative;
+}
 @media (min-width: @mq-smMin) {
     .l-panelFixed {
         position: fixed;
         left: 0;
         top: 0;
-        height: 100%;
+        bottom: 0;
         overflow: scroll;
+        width: 50%;
+    }
+
+    .l-panelFixed--right {
+        right: 0;
+        height: auto;
+        left: auto;
     }
 }

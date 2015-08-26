@@ -1,11 +1,11 @@
 {% load nav %}
 
 <nav>
-    <ul class="navList{% if displayAll %} navList--displayAll{% endif %}">
-        <li class="is-active"><a href="{% url 'home' %}"><span>Matt Taube</span></a></li>
-        <li class="{% is_active request 'profile' %}"><a href="{% url 'profile' %}"><span>Profile</span></a></li>
-        <li class="{% is_active request 'blog_index' %}"><a href="{% url 'blog_index' %}"><span>Words</span></a></li>
-        <li class="{% is_active request 'portfolio' %}"><a href="{% url 'portfolio' %}"><span>Work</span></a></li>
-        <li class="{% is_active request 'contact' %}"><a href="{% url 'contact' %}"><span>Contact</span></a></li>
+    <ul class="navList{% if display_all %} navList--displayAll{% endif %}">
+        <li class="is-always {% is_active request 'home' %}"><a href="{% url 'home' %}"><span>Matt Taube</span></a></li>
+        <li><a href="{% url 'profile' %}"><span>Profile</span></a></li>
+        <li class="{% is_active_prefix request 'portfolio' %}"><a href="{% url 'portfolio' %}"><span>Work</span></a></li>
+        <li class="{% is_active_prefix request 'blog_index' %}"><a href="{% url 'blog_index' %}"><span>Words</span></a></li>
+        <li><a href="{% url 'contact' %}"><span>Contact</span></a></li>
     </ul>
 </nav>

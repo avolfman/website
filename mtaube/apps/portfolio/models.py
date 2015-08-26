@@ -16,6 +16,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 
+from mtaube.apps.common.constants import FONT_COLORS
 from mtaube.apps.common.models import PageAbstract
 
 
@@ -29,6 +30,11 @@ class Project(PageAbstract):
     slug = models.SlugField(max_length=255)
     thumbnail = models.ImageField(upload_to='projects', blank=True)
     thumbnail_bg_color = models.CharField(max_length=255, blank=True)
+    thumbnail_font_color = models.CharField(
+        max_length=255,
+        choices=FONT_COLORS,
+        default=FONT_COLORS[0][0]
+    )
 
     def save(self, *args, **kwargs):
         if not self.id:

@@ -2,6 +2,7 @@
 
 .navList {
     .f-helvetica--bold();
+    font-size: @fontSize-jumbo;
     list-style-type: none;
     padding: 0;
 }
@@ -10,7 +11,8 @@
     display: none;
     position: relative;
 }
-.navList > li.is-active,
+.navList > li.is-activePrefix,
+.navList > li.is-always,
 .navList--displayAll > li {
     display: block;
 }
@@ -19,9 +21,18 @@
 .navList-link {
     text-decoration: none;
 }
+.navList > li > a {
+    .m-opacity(.5);
+    .m-transition(opacity);
+}
+.navList > li > a:hover,
+.navList > li.is-active > a {
+    .m-opacity(1);
+}
 
 .navList-link {
     .m-transition(background-color);
+    font-size: 24px;
     background-color: @color-black--opaque;
     display: table;
     height: 100%;

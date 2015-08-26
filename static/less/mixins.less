@@ -21,6 +21,13 @@
     }
 }
 
+.m-opacity(@opacity) {
+    opacity: @opacity;
+    // IE8 filter
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
 .m-transition(@property, @speed: @speed-default, @easing: @easing-default) {
             transition: @property @speed @easing;
     -webkit-transition: @property @speed @easing;
