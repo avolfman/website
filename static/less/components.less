@@ -1,26 +1,48 @@
 // Components
 
-// .mediaPanel {
-//     height: 200px;
-// }
-// @media (min-width: @mq-smMin) {
-    .mediaPanel {
-        .m-opacity(0);
-        .m-transition(opacity);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: absolute;
-        height: auto;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
-    .mediaPanel.is-active {
-        .m-opacity(1);
-    }
-// }
+.blocksList {
+    .f-adobeCaslonPro--regular();
+    list-style-type: none;
+    padding: 0;
+}
+
+.blocksList > li { position: relative; }
+
+.blocksList-block {
+    .m-transition(background-color);
+    font-size: 2.4rem;
+    display: table;
+    height: 100%;
+    width: 100%;
+
+    border-bottom: 3px solid @color-black;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.blocksList-cell {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 3.6rem;
+}
+
+.mediaPanel {
+    .m-opacity(0);
+    .m-transition(opacity);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.mediaPanel.is-active {
+    .m-opacity(1);
+}
 
 .mediaPanelTarget {
     border-bottom: 3px solid @color-black;

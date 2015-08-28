@@ -1,7 +1,49 @@
 // Normalize
+//
+// Credits:
+// https://github.com/necolas/normalize.css/blob/master/normalize.css
+// https://github.com/twbs/bootstrap/blob/v4-dev/scss/_reboot.scss
+
+// Reset Box Sizing
+// Credit: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+// General Resets
+
+a {
+    // Remove the gray background color from active links in IE 10.
+    background-color: transparent;
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}
 
 body,
 h1,
 ul {
     margin: 0;
+}
+
+html {
+    // Changes the default tap highlight to be completely transparent in iOS.
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+img {
+    // By default, `<img>`s are `inline-block`. This assumes that,
+    // and vertically centers them.
+    vertical-align: middle;
+    // Remove border when inside `a` element in IE 8/9/10.
+    border: 0;
 }

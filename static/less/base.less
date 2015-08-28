@@ -1,11 +1,16 @@
 // Base
 
 a {
-    color: @color-black2;
+    color: @color-black;
     text-decoration: none;
 }
 p a {
     border-bottom: 3px solid @color-black;
+}
+
+body {
+    background: @color-gray--bg;
+    color: @color-black;
 }
 
 h1,
@@ -18,17 +23,42 @@ p {
 h1,
 h2,
 h3 {
-    .f-helvetica--bold();
-    // .f-roboto--bold();
-    // .f-adobeCaslonPro--regular();
+    .f-adobeCaslonPro--regular();
 
     font-size: @fontSize-jumbo;
 }
 
+html {
+    font-size: 10px;
+}
+@media (min-width: @mq-smMin) {
+    html {
+        font-size: 14px;
+    }
+}
+@media (min-width: @mq-mdMin) {
+    html {
+        font-size: 16px;
+    }
+}
+// @media (min-width: @mq-lgMin) {
+//     html {
+//         font-size: 20px;
+//     }
+// }
+@media (min-width: @mq-xlMin) {
+    html {
+        font-size: 22px;
+    }
+}
+
 p {
     .f-roboto--regular();
-    // .f-adobeCaslonPro--regular();
 
-    font-size: 32px;
-    line-height: 1.5em;
+    font-size: @fontSize-default;
+    line-height: 2.6rem;
+}
+.content--secondary p {
+    font-size: @fontSize-tiny;
+    line-height: 2.2rem;
 }

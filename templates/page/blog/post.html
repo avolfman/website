@@ -1,7 +1,10 @@
 {% extends 'page/default.html' %}
 
 {% block page_content %}{% endblock %}
+{% block page_content_secondary %}{% endblock %}
 
 {% block content_right %}
-    {{ page.content|safe|linebreaks }}
+    <div class="l-panel">
+        {{ page.content|safe|linebreaks }}
+    </div>
 {% endblock %}

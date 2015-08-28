@@ -30,6 +30,7 @@ class MediaPanel(models.Model):
 class PageAbstract(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
+    content_secondary = models.TextField(blank=True)
     media_panels = models.ManyToManyField(
         MediaPanel,
         related_name='%(app_label)s_%(class)s_panels',

@@ -1,9 +1,7 @@
 // Nav
 
 .navList {
-    .f-helvetica--bold();
-    // .f-roboto--bold();
-    // .f-adobeCaslonPro--regular();
+    .f-adobeCaslonPro--regular();
 
     font-size: @fontSize-jumbo;
     list-style-type: none;
@@ -20,32 +18,12 @@
     display: block;
 }
 
-.navList > li > a,
-.navList-link {
-    text-decoration: none;
-}
 .navList > li > a {
     .m-opacity(.5);
     .m-transition(opacity);
+    text-decoration: none;
 }
 .navList > li > a:hover,
 .navList > li.is-active > a {
     .m-opacity(1);
-}
-
-.navList-link {
-    .m-transition(background-color);
-    font-size: 24px;
-    background-color: @color-black--opaque;
-    display: table;
-    height: 100%;
-    width: 100%;
-}
-.no-touch .navList-link:hover {
-    background-color: @color-transparent;
-}
-
-.navList-link span {
-    display: table-cell;
-    vertical-align: middle;
 }

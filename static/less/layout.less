@@ -1,13 +1,22 @@
 // Layout
 
-.l-panel {
-
+.l-panel,
+.l-panelFixed {
+    padding: 2rem;
+}
+.l-panelFixed--left {
+    background: @color-white--bg;
 }
 .l-panelFixed--right {
     height: 200px;
     position: relative;
 }
 @media (min-width: @mq-smMin) {
+    .l-panel,
+    .l-panelFixed {
+        padding: 3.6rem;
+    }
+
     .l-panelFixed {
         position: fixed;
         left: 0;
@@ -15,6 +24,10 @@
         bottom: 0;
         overflow: scroll;
         width: 50%;
+    }
+
+    .l-panelFixed--left {
+        padding-right: 4.8em;
     }
 
     .l-panelFixed--right {

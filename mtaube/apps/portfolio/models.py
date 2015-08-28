@@ -16,25 +16,19 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 
-from mtaube.apps.common.constants import FONT_COLORS
 from mtaube.apps.common.models import PageAbstract
 
 
 @python_2_unicode_compatible
 class Project(PageAbstract):
     client_name = models.CharField(max_length=255, blank=True)
+    color = models.CharField(max_length=255, blank=True)
     github_link = models.URLField(max_length=255, blank=True)
     is_active = models.BooleanField(default=True)
     is_locked = models.BooleanField(default=True)
+    logo = models.ImageField(upload_to='projects', blank=True)
     order = models.PositiveSmallIntegerField(default=0)
     slug = models.SlugField(max_length=255)
-    thumbnail = models.ImageField(upload_to='projects', blank=True)
-    thumbnail_bg_color = models.CharField(max_length=255, blank=True)
-    thumbnail_font_color = models.CharField(
-        max_length=255,
-        choices=FONT_COLORS,
-        default=FONT_COLORS[0][0]
-    )
 
     def save(self, *args, **kwargs):
         if not self.id:
