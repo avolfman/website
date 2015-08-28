@@ -30,6 +30,9 @@ class Project(PageAbstract):
     order = models.PositiveSmallIntegerField(default=0)
     slug = models.SlugField(max_length=255)
 
+    class Meta:
+        ordering = ['order']
+
     def save(self, *args, **kwargs):
         if not self.id:
             if self.client_name:

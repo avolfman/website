@@ -14,12 +14,13 @@
 
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.utils import timezone
 
 from mtaube.apps.common.models import PageAbstract
 
 
 class Post(PageAbstract):
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateField(default=timezone.now)
     is_active = models.BooleanField(default=True)
     slug = models.SlugField(max_length=255)
     color = models.CharField(max_length=255, blank=True)
