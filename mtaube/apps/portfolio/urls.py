@@ -19,5 +19,5 @@ from mtaube.apps.portfolio.views import IndexView, ProjectView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='portfolio'),
-    url(r'^(?P<slug>[A-Za-z0-9_-]+)/$', ProjectView.as_view(), name='project'),
+    url(r'^(?P<slug>[\w-]+)/$', ProjectView.as_view(), name='project'),
 ]

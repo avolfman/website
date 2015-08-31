@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+{% extends base_template %}
 {% load nav %}
+
 {% block title %}
     {% if page.meta_title %}
         {{ page.meta_title }}
@@ -11,7 +12,7 @@
 {% block description %}{{ page.meta_description }}{% endblock %}
 {% block keywords %}{{ page.meta_keywords }}{% endblock %}
 
-{% block content_left %}
+{% block panel_left_content %}
     {% block page_title %}<h1 style="{% if page.color %}color: {{ page.color }};{% endif %}">{{ page.title }}</h1>{% endblock %}
     {% block page_content %}{{ page.content|safe|linebreaks }}{% endblock %}
     {% block page_content_secondary %}
@@ -19,7 +20,7 @@
     {% endblock %}
 {% endblock %}
 
-{% block content_right %}
+{% block panel_right_content %}
     <div class="l-panelFixed l-panelFixed--right">
         {% if page.media_panel_default %}
             {% include 'media_panel.html' with panel=page.media_panel_default is_default=True %}

@@ -3,8 +3,6 @@
 {% block page_content %}{% endblock %}
 {% block page_content_secondary %}{% endblock %}
 
-{% block content_right %}
-    <div class="l-panel">
-        {{ page.content|safe|linebreaks }}
-    </div>
+{% block panel_right_content %}
+    {{ page.content|safe|linebreaks }}
 {% endblock %}

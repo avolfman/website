@@ -46,9 +46,10 @@ def is_active_prefix(request, view_name):
         view_name: (string) the view name to reverse
 
     Returns:
-        (string) 'is-active' or ''
+        (string) 'is-activePrefix' or ''
     """
     path = reverse(view_name)
+
     if path in request.path and path != request.path:
         return 'is-activePrefix'
     return ''

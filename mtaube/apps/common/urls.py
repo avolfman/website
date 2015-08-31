@@ -21,8 +21,19 @@ urlpatterns = [
     url(
         r'^$',
         PageView.as_view(template_name='page/home.html'),
+        {'slug': 'home'},
         name='home'
     ),
-    url(r'^contact/$', PageView.as_view(), name='contact'),
-    url(r'^profile/$', PageView.as_view(), name='profile'),
+    url(
+        r'^contact/$',
+        PageView.as_view(),
+        {'slug': 'contact'},
+        name='contact'
+    ),
+    url(
+        r'^profile/$',
+        PageView.as_view(),
+        {'slug': 'profile'},
+        name='profile'
+    ),
 ]

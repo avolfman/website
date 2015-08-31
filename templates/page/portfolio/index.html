@@ -1,6 +1,6 @@
 {% extends 'page/default.html' %}
 
-{% block content_right %}
+{% block panel_right_content %}
     <ul class="blocksList g-row">
         {% for project in projects %}
             {% if project.is_active and not project.github_link %}

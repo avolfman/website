@@ -28,14 +28,20 @@
         <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
-        <div class="g-wrapper">
-            <div class="l-panelFixed l-panelFixed--left contentWrapper">
-                {% block nav %}{% include 'nav.html' %}{% endblock %}
-                {% block content_left %}{% endblock %}
-            </div>
-            <div class="g-col g-col--smMin-6 g-col--smMinPush-6">
-                {% block content_right %}{% endblock %}
-            </div>
+        <div class="js-panelWrapper js-panelLeft">
+            {% block panel_left %}
+                <div class="l-panelFixed l-panelFixed--left contentWrapper">
+                    {% block nav %}{% include 'nav.html' %}{% endblock %}
+                    {% block panel_left_content %}{% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+        <div class="js-panelWrapper js-panelRight">
+            {% block panel_right %}
+                <div class="l-panel l-panel--right">
+                    {% block panel_right_content %}{% endblock %}
+                </div>
+            {% endblock %}
         </div>
 
         {% if REQUIREJS_BUILD %}

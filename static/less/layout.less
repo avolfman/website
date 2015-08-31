@@ -1,8 +1,11 @@
 // Layout
 
-.l-panel,
-.l-panelFixed {
-    padding: 2rem;
+// .l-panel,
+// .l-panelFixed {
+//     padding: 2rem;
+// }
+.l-panel {
+    // width: 50%;
 }
 .l-panelFixed--left {
     background: @color-white--bg;
@@ -12,9 +15,16 @@
     position: relative;
 }
 @media (min-width: @mq-smMin) {
-    .l-panel,
-    .l-panelFixed {
-        padding: 3.6rem;
+    // .l-panel,
+    // .l-panelFixed {
+    //     padding: 3.6rem;
+    // }
+    .l-panel {
+        width: 50%;
+    }
+
+    .l-panel--right {
+        margin-left: 50%;
     }
 
     .l-panelFixed {
@@ -26,9 +36,9 @@
         width: 50%;
     }
 
-    .l-panelFixed--left {
-        padding-right: 4.8em;
-    }
+    // .l-panelFixed--left {
+    //     padding-right: 4.8em;
+    // }
 
     .l-panelFixed--right {
         right: 0;

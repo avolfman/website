@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from django.db import models
+from django.template.defaultfilters import slugify
 from django.utils.encoding import python_2_unicode_compatible
 
 
@@ -42,6 +43,7 @@ class PageAbstract(models.Model):
         blank=True,
         null=True
     )
+    slug = models.SlugField(max_length=255)
 
     meta_title = models.CharField(max_length=255, blank=True)
     meta_keywords = models.CharField(max_length=255, blank=True)
@@ -53,9 +55,12 @@ class PageAbstract(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+
+        super(PageAbstract, self).save(*args, **kwargs)
+
 
 class Page(PageAbstract):
-    url = models.CharField(max_length=255, unique=True)
-
-    def __str__(self):
-        return '%s - %s' % (self.title, self.url)
+    pass
