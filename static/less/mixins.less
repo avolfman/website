@@ -56,10 +56,26 @@
     filter: ~"alpha(opacity=@{opacity-ie})";
 }
 
+.m-transform(@transformation) {
+            transform: @transformation;
+    -webkit-transform: @transformation;
+       -moz-transform: @transformation;
+        -ms-transform: @transformation;
+         -o-transform: @transformation;
+}
+
 .m-transition(@property, @speed: @speed-default, @easing: @easing-default) {
             transition: @property @speed @easing;
     -webkit-transition: @property @speed @easing;
        -moz-transition: @property @speed @easing;
         -ms-transition: @property @speed @easing;
          -o-transition: @property @speed @easing;
+}
+
+.m-transitionTransform(@speed: @speed-default, @easing: @easing-default) {
+            transition: transform @speed @easing;
+    -webkit-transition: -webkit-transform @speed @easing;
+       -moz-transition: -moz-transform @speed @easing;
+        -ms-transition: -ms-transform @speed @easing;
+         -o-transition: -o-transform @speed @easing;
 }

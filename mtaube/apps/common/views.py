@@ -70,24 +70,16 @@ class HybridPageMixin(JsonResponseMixin):
         template_names = self.get_template_names()
         context_instance = RequestContext(self.request)
 
-        context['base_template'] = 'base_panel_left.html'
-        panel_left_html = render_to_string(
-            template_names,
-            context,
-            context_instance
-        )
-
-        context['base_template'] = 'base_panel_right.html'
-        panel_right_html = render_to_string(
+        context['base_template'] = 'base_content.html'
+        html = render_to_string(
             template_names,
             context,
             context_instance
         )
 
         return {
-            'pageTitle': page.title,
-            'panelLeft': panel_left_html,
-            'panelRight': panel_right_html
+            'title': page.title,
+            'content': html
         }
 
 

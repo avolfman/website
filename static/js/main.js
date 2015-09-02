@@ -18,17 +18,31 @@ require.config({
         'almond': 'lib/almond',
         'backbone': 'lib/backbone',
         'jquery': 'lib/jquery',
+        'jquery.easing': 'lib/jquery.easing',
+        'jquery.scrollTo': 'lib/jquery.scrollTo',
+        'jquery.transition': 'lib/jquery.transition',
         'underscore': 'lib/underscore',
+        'domReady': 'lib/domReady',
+
+        // modules
+        'app': 'modules/app',
+        'ContentMediator': 'modules/ContentMediator',
 
         // routers
-        // 'GlobalRouter': 'routers/GlobalRouter',
+        'GlobalRouter': 'routers/GlobalRouter',
+
+        // views
+        'PageView': 'views/PageView'
     },
     shim: {
-        'underscore': { exports: '_' },
         'backbone': {
             deps: ['jquery', 'underscore'],
             exports: 'Backbone'
         },
+        'jquery.easing': { deps: ['jquery'] },
+        'jquery.scrollTo': { deps: ['jquery', 'jquery.easing'] },
+        'jquery.transition': { deps: ['jquery'] },
+        'underscore': { exports: '_' },
     },
 });
 
@@ -38,76 +52,18 @@ define(
     'jquery',
     'backbone',
 
+    // modules
+    'ContentMediator',
+
     // routers
-    // 'GlobalRouter',
+    'GlobalRouter',
 ],
 
-function($, Backbone) {
+function($, Backbone, ContentMediator, GlobalRouter) {
 
-    var app = {
-        // Global event aggregator
-        vent: _.extend(Backbone.Events),
-    }
+    'use strict';
 
-    var GlobalRouter = Backbone.Router.extend({
-        routes: {
-            // 'contact/': 'contact',
-
-            '*default': 'default',
-        },
-        initialize: function () {
-            // console.log('GlobalRouter.initialize()');
-            this.isFirstRoute = true;
-
-            this.once('route', this.all);
-        },
-
-        default: function (event) {
-            console.log('GlobalRouter.default()');
-
-            if (!this.isFirstRoute) {
-                app.vent.trigger('route:changed', window.location.href);
-            }
-        },
-
-        all: function (event) {
-            console.log('GlobalRouter.all()');
-            this.isFirstRoute = false;
-        }
-    });
-
-    var PageView = Backbone.View.extend({
-        initialize: function () {
-            console.log('PageView.initialize()');
-        },
-    });
-
-    var contentMediator = {
-        getContent: function (url) {
-            console.log('contentMediator.getContent()');
-            
-            $.ajax({
-                url: url,
-                error: function (jqXHR, textStatus, errorThrown) {
-                    debugger;
-                },
-                success: function (data, textStatus, jqXHR) {
-                    $('.js-panelLeft').html(data.panelLeft)
-                    $('.js-panelRight').html(data.panelRight)
-                    document.title = data.pageTitle
-                }
-            })
-        },
-        createView: function () {
-
-        }
-    };
-
-    app.vent.on('route:changed', contentMediator.getContent);
-
-
-
-
+    new ContentMediator();
     new GlobalRouter();
 
     // Do not start Backbone.history until all routers have been initialized.
@@ -115,10 +71,7 @@ function($, Backbone) {
         Backbone.history.start({
             hashChange: false,
             pushState: true,
-            // root: glco.root,
-            // trigger: true,
         });
-
 
         // Credit: https://gist.github.com/tbranyen/1142129
         // All navigation that is relative should be passed through the navigate

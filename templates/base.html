@@ -28,21 +28,7 @@
         <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
-        <div class="js-panelWrapper js-panelLeft">
-            {% block panel_left %}
-                <div class="l-panelFixed l-panelFixed--left contentWrapper">
-                    {% block nav %}{% include 'nav.html' %}{% endblock %}
-                    {% block panel_left_content %}{% endblock %}
-                </div>
-            {% endblock %}
-        </div>
-        <div class="js-panelWrapper js-panelRight">
-            {% block panel_right %}
-                <div class="l-panel l-panel--right">
-                    {% block panel_right_content %}{% endblock %}
-                </div>
-            {% endblock %}
-        </div>
+        {% block content %}{% endblock %}
 
         {% if REQUIREJS_BUILD %}
             <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>
