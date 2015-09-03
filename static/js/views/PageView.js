@@ -15,15 +15,16 @@ function (app, $, Backbone) {
     'use strict';
 
     var PageView = Backbone.View.extend({
+        el: '.js-page',
         initialize: function (options) {
             this.$switches = this.$('.js-switch');
             this.$panels = this.$('.js-panel');
+            this.subviews = options.subviews;
             this.title = options.title;
 
-            if (!$.contains(document.documentElement, this.$el[0])) this.render();
-            else this.transitionIn();
+            this.listenTo(app.vent, 'page:teardown', this.transitionOut);
 
-            this.listenTo(app.vent, 'page:requested', this.transitionOut);
+            this.render();
         },
         transitionIn: function () {
             var i = 0;
@@ -56,12 +57,31 @@ function (app, $, Backbone) {
                 setTimeout(function () { $(el).addClass('is-active'); }, 100 * i);
             });
         },
-        render: function () {
-            $('body').prepend(this.$el);
-            document.title = this.title;
 
-            app.reflow(this.$el);
+        render: function () {
+            if (!$.contains(document.documentElement, this.$el[0])) {
+                $('body').prepend(this.$el);
+                document.title = this.title;
+
+                app.reflow(this.$el);
+            }
+
+            if (this.subviews) {
+                _.each(this.subviews, function (View, i, subviews) {
+                    subviews[i] = new View();
+                }, this);
+            }
+
             this.transitionIn();
+
+            return this;
+        },
+        remove: function () {
+            _.each(this.subviews, function (view) {
+                view.remove();
+            });
+
+            Backbone.View.prototype.remove.call(this);
         },
     });
 

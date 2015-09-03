@@ -26,7 +26,7 @@ urlpatterns = [
     ),
     url(
         r'^contact/$',
-        PageView.as_view(),
+        PageView.as_view(template_name='page/contact.html'),
         {'slug': 'contact'},
         name='contact'
     ),

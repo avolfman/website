@@ -79,7 +79,7 @@ class HybridPageMixin(JsonResponseMixin):
 
         return {
             'title': page.title,
-            'content': html
+            'html': html
         }
 
 

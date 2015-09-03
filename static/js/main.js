@@ -22,7 +22,6 @@ require.config({
         'jquery.scrollTo': 'lib/jquery.scrollTo',
         'jquery.transition': 'lib/jquery.transition',
         'underscore': 'lib/underscore',
-        'domReady': 'lib/domReady',
 
         // modules
         'app': 'modules/app',
@@ -32,6 +31,7 @@ require.config({
         'GlobalRouter': 'routers/GlobalRouter',
 
         // views
+        'GoogleMapsView': 'views/GoogleMapsView',
         'PageView': 'views/PageView'
     },
     shim: {

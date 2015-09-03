@@ -35,6 +35,7 @@
                     {% for panel in page.media_panels.all %}
                         {% include 'media_panel.html' with panel=panel %}
                     {% endfor %}
+                    {% block panel_right_content %}{% endblock %}
                 </div>
             {% endblock %}
         </div>

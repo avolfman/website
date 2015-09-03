@@ -23,30 +23,38 @@ function (app, Backbone, _, PageView) {
 
     _.extend(ContentMediator.prototype, Backbone.Events, {
         initialize: function () {
-            this.listenTo(app.vent, 'route:changed', this.changeContent);
+            this.pageView = undefined;
+            this.pageViewOptions = {}
 
-            new PageView({ el: '.js-page' });
+            this.listenTo(app.vent, 'route', this.initializeContent);
         },
-        changeContent: function () {
-            app.scrollTo(0, {
-                always: $.proxy(this.requestContent, this)
-            });
+        initializeContent: function (options) {
+            this.pageViewOptions = options;
+
+            if (!this.pageView) this.initializePageView(options);
+            else {
+                app.scrollTo(0, {
+                    always: $.proxy(this.requestContent, this, $.proxy(this.initializePageView, this))
+                });
+            }
         },
-        requestContent: function () {
+        initializePageView: function () {
+            this.pageView = new PageView(this.pageViewOptions);
+        },
+        requestContent: function (callback) {
             $.ajax({
                 url: window.location.href,
-                beforeSend: function () { app.vent.trigger('page:requested'); },
+                beforeSend: function () { app.vent.trigger('page:teardown'); },
                 error: function (jqXHR, textStatus, errorThrown) {
                     debugger;
                 },
                 success: $.proxy(function (data, textStatus, jqXHR) {
-                    this.loadContent(data);
+                    _.extend(this.pageViewOptions, data, { el: data.html })
+
+                    callback();
                 }, this)
             });
         },
-        loadContent: function (data) {
-            new PageView(_.extend(data, { el: data.content }));
-        }
     });
 
     return ContentMediator;

@@ -4,26 +4,31 @@ define(
 
     // lib
     'backbone',
+
+    // views
+    'GoogleMapsView',
 ],
 
-function (app, Backbone) {
+function (app, Backbone, GoogleMapsView) {
 
     'use strict';
 
     var GlobalRouter = Backbone.Router.extend({
         routes: {
+            'contact/': 'contact',
             '*default': 'default',
         },
-        initialize: function () {
-            this.isFirstRoute = true;
-
-            this.once('route', this.all);
-        },
-        all: function (event) {
-            this.isFirstRoute = false;
+        contact: function (event) {
+            this.announce({
+                subviews: [GoogleMapsView],
+            });
         },
         default: function (event) {
-            if (!this.isFirstRoute) app.vent.trigger('route:changed');
+            this.announce();
+        },
+
+        announce: function (options) {
+            app.vent.trigger('route', _.extend({}, options));
         },
     });
 
