@@ -62,6 +62,7 @@ module.exports = function (grunt) {
                     'csstransforms',
                     'csstransforms3d',
                     'csstransitions',
+                    'history',
                     'prefixed',
                     'opacity',
                     'touch'
