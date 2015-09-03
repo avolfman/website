@@ -43,7 +43,7 @@ function (app, Backbone, _, PageView) {
         },
         requestContent: function (callback) {
             $.ajax({
-                url: window.location.href,
+                dataType: 'json',
                 beforeSend: function () { app.vent.trigger('page:teardown'); },
                 error: function (jqXHR, textStatus, errorThrown) {
                     debugger;
@@ -52,7 +52,10 @@ function (app, Backbone, _, PageView) {
                     _.extend(this.pageViewOptions, data, { el: data.html })
 
                     callback();
-                }, this)
+                }, this),
+                // Add fake URL parameter so that browser does not cache the AJAX / non-AJAX requests as the same.
+                // Without it sometimes raw JSON is shown in the browser, i.e. when re-opening a closed tab.
+                url: window.location.href + '?ajax=true',
             });
         },
     });
