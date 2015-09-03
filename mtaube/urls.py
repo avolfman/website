@@ -20,8 +20,12 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('mtaube.apps.common.urls')),
-    url(r'^words/', include('mtaube.apps.blog.urls')),
-    url(r'^work/', include('mtaube.apps.portfolio.urls')),
+    url(r'^words/', include('mtaube.apps.blog.urls'), {'page_slug': 'words'}),
+    url(
+        r'^work/',
+        include('mtaube.apps.portfolio.urls'),
+        {'page_slug': 'work'}
+    ),
 
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

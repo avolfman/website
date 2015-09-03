@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.views.generic.detail import DetailView
-
 from mtaube.apps.common.views import PageListView
+from mtaube.apps.common.views import PageView
 from mtaube.apps.blog.models import Post
 
 
@@ -25,7 +24,7 @@ class IndexView(PageListView):
     context_object_name = 'posts'
 
 
-class PostView(DetailView):
+class PostView(PageView):
     """View used to render blog post pages."""
     model = Post
     template_name = 'page/blog/post.html'

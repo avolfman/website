@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.views.generic.detail import DetailView
-
-from mtaube.apps.common.views import DEFAULT_PAGE_TEMPLATE, PageListView
+from mtaube.apps.common.views import PageView
+from mtaube.apps.common.views import PageListView
 from mtaube.apps.portfolio.models import Project
 
 
@@ -25,8 +24,7 @@ class IndexView(PageListView):
     context_object_name = 'projects'
 
 
-class ProjectView(DetailView):
+class ProjectView(PageView):
     """View used to render project pages."""
     model = Project
     context_object_name = 'page'
-    template_name = DEFAULT_PAGE_TEMPLATE

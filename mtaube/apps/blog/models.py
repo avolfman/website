@@ -13,7 +13,6 @@
 # limitations under the License.
 
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils import timezone
 
 from mtaube.apps.common.models import PageAbstract
@@ -22,14 +21,7 @@ from mtaube.apps.common.models import PageAbstract
 class Post(PageAbstract):
     date = models.DateField(default=timezone.now)
     is_active = models.BooleanField(default=True)
-    slug = models.SlugField(max_length=255)
     color = models.CharField(max_length=255, blank=True)
 
     class Meta:
         ordering = ['-date']
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.slug = slugify(self.title)
-
-        super(Post, self).save(*args, **kwargs)

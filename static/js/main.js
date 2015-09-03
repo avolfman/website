@@ -14,66 +14,90 @@
 
 require.config({
     paths: {
-        // Libraries
+        // lib
         'almond': 'lib/almond',
         'backbone': 'lib/backbone',
         'jquery': 'lib/jquery',
+        'jquery.easing': 'lib/jquery.easing',
+        'jquery.scrollTo': 'lib/jquery.scrollTo',
+        'jquery.transition': 'lib/jquery.transition',
         'underscore': 'lib/underscore',
 
-        // jQuery Plugins
+        // modules
+        'app': 'modules/app',
+        'ContentMediator': 'modules/ContentMediator',
 
-        // Modules
+        // routers
+        'GlobalRouter': 'routers/GlobalRouter',
+
+        // views
+        'GoogleMapsView': 'views/GoogleMapsView',
+        'PageView': 'views/PageView'
     },
     shim: {
-        'underscore': { exports: '_' },
         'backbone': {
             deps: ['jquery', 'underscore'],
             exports: 'Backbone'
         },
+        'jquery.easing': { deps: ['jquery'] },
+        'jquery.scrollTo': { deps: ['jquery', 'jquery.easing'] },
+        'jquery.transition': { deps: ['jquery'] },
+        'underscore': { exports: '_' },
     },
 });
 
 define(
 [
-    // Libraries
+    // lib
     'jquery',
     'backbone',
-    'underscore',
 
-    // Modules
+    // modules
+    'ContentMediator',
 
-    // jQuery Plugins
+    // routers
+    'GlobalRouter',
 ],
 
-function($, Backbone, _) {
+function($, Backbone, ContentMediator, GlobalRouter) {
 
-    var MediaPanelView = Backbone.View.extend({
-        initialize: function (options) {
-            this.listenTo(options.mediator, 'toggle:' + this.$el.attr('id'), this.toggle);
-        },
-        toggle: function () {
-            this.$el.toggleClass('is-active');
-        },
-    });
+    'use strict';
 
-    var MediaPanelMediator = Backbone.View.extend({
-        initialize: function () {
-            this.$triggers = $('.js-mediaPanelTrigger').on('mouseenter mouseleave', $.proxy(this.announceHover, this));
+    new ContentMediator();
+    new GlobalRouter();
 
-            $('.js-mediaPanel').each($.proxy(function (i, el) {
-                new MediaPanelView({
-                    el: el,
-                    mediator: this
-                });
-            }, this));
-        },
-        announceHover: function (event) {
-            var target = $(event.target).data('target');
+    // Do not start Backbone.history until all routers have been initialized.
+    if (Modernizr.history) {
+        Backbone.history.start({
+            hashChange: false,
+            pushState: true,
+        });
 
-            this.trigger('toggle:' + $(event.target).data('target'));
-        },
-    });
+        // Credit: https://gist.github.com/tbranyen/1142129
+        // All navigation that is relative should be passed through the navigate
+        // method, to be processed by the router. If the link has a `data-bypass`
+        // attribute, bypass the delegation completely.
+        $(document).on('click', 'a[href]:not([data-bypass])', function(event) {
+            // Get the absolute anchor href.
+            var href = {
+                attr: $(this).attr('href'),
+                prop: $(this).prop('href')
+            };
+            // Get the absolute root.
+            var root = location.protocol + "//" + location.host;
 
-    if (!Modernizr.touch) new MediaPanelMediator();
+            // Ensure the root is part of the anchor href, meaning it's relative.
+            if (href.prop.slice(0, root.length) === root) {
+                // Stop the default event to ensure the link will not cause a page
+                // refresh.
+                event.preventDefault();
+
+                // Note by using Backbone.history.navigate, router events will not be
+                // triggered.  If this is a problem, change this to navigate on your
+                // router.
+                Backbone.history.navigate(href.attr, true);
+            }
+        });
+    }
 
 });

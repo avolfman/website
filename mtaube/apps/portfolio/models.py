@@ -28,7 +28,6 @@ class Project(PageAbstract):
     is_locked = models.BooleanField(default=True)
     logo = models.ImageField(upload_to='projects', blank=True)
     order = models.PositiveSmallIntegerField(default=0)
-    slug = models.SlugField(max_length=255)
 
     class Meta:
         ordering = ['order']

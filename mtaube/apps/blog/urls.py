@@ -19,5 +19,5 @@ from mtaube.apps.blog.views import IndexView, PostView
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='blog_index'),
-    url(r'^(?P<slug>[A-Za-z0-9_-]+)/$', PostView.as_view(), name='blog_post'),
+    url(r'^(?P<slug>[\w-]+)/$', PostView.as_view(), name='blog_post'),
 ]

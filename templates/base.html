@@ -28,15 +28,7 @@
         <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
-        <div class="g-wrapper">
-            <div class="l-panelFixed l-panelFixed--left contentWrapper">
-                {% block nav %}{% include 'nav.html' %}{% endblock %}
-                {% block content_left %}{% endblock %}
-            </div>
-            <div class="g-col g-col--smMin-6 g-col--smMinPush-6">
-                {% block content_right %}{% endblock %}
-            </div>
-        </div>
+        {% block content %}{% endblock %}
 
         {% if REQUIREJS_BUILD %}
             <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>

@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+{% extends base_template %}
 {% load nav %}
+
 {% block title %}
     {% if page.meta_title %}
         {{ page.meta_title }}
@@ -11,21 +12,32 @@
 {% block description %}{{ page.meta_description }}{% endblock %}
 {% block keywords %}{{ page.meta_keywords }}{% endblock %}
 
-{% block content_left %}
-    {% block page_title %}<h1 style="{% if page.color %}color: {{ page.color }};{% endif %}">{{ page.title }}</h1>{% endblock %}
-    {% block page_content %}{{ page.content|safe|linebreaks }}{% endblock %}
-    {% block page_content_secondary %}
-        <div class="content--secondary">{{ page.content_secondary|safe|linebreaks }}</div>
-    {% endblock %}
-{% endblock %}
 
-{% block content_right %}
-    <div class="l-panelFixed l-panelFixed--right">
-        {% if page.media_panel_default %}
-            {% include 'media_panel.html' with panel=page.media_panel_default is_default=True %}
-        {% endif %}
-        {% for panel in page.media_panels.all %}
-            {% include 'media_panel.html' with panel=panel %}
-        {% endfor %}
+{% block content %}
+    <div class="js-page l-page is-entering">
+        <div class="l-pageOverflowWrapper">
+            {% block panel_left %}
+                <div class="js-panel l-panel l-panel--left">
+                    {% block nav %}{% include 'nav.html' %}{% endblock %}
+                    {% block page_title %}<h1 style="{% if page.color %}color: {{ page.color }};{% endif %}">{{ page.title }}</h1>{% endblock %}
+                    {% block page_content %}{% if page.content %}{{ page.content|safe|linebreaks }}{% endif %}{% endblock %}
+                    {% block page_content_secondary %}
+                        {% if page.content_secondary %}<div class="content--secondary">{{ page.content_secondary|safe|linebreaks }}</div>{% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        
+            {% block panel_right %}
+                <div class="l-panel l-panel--right l-panel--smMin-fixed">
+                    {% if page.media_panel_default %}
+                        {% include 'media_panel.html' with panel=page.media_panel_default is_default=True %}
+                    {% endif %}
+                    {% for panel in page.media_panels.all %}
+                        {% include 'media_panel.html' with panel=panel %}
+                    {% endfor %}
+                    {% block panel_right_content %}{% endblock %}
+                </div>
+            {% endblock %}
+        </div>
     </div>
 {% endblock %}
