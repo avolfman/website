@@ -16,8 +16,9 @@
 }
 
 .l-panel {
-    .m-transition(all, .35s);
+    .m-transition(all, .4s);
     .m-transform(translate3d(-100%, 0, 0));
+    position: relative;
 }
 .is-active .l-panel {
     .m-opacity(1);
@@ -28,6 +29,8 @@
 }
 
 .l-panel--left {
+    .m-boxShadow(0px 3px 3px -2px @color-black--opaque);
+    z-index: 1;
     background: @color-white--bg;
     left: 0;
 }
@@ -50,11 +53,11 @@
         bottom: 0;
         overflow-y: scroll;
     }
+    .l-panel--left {
+        .m-boxShadow(3px 0px 3px -2px @color-black--opaque);
+    }
     .l-panel--right {
         margin-left: 50%;
-    }
-
-    .l-panel--right {
         .m-transform(translate3d(100%, 0, 0));
     }
 }

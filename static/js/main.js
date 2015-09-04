@@ -32,7 +32,8 @@ require.config({
 
         // views
         'GoogleMapsView': 'views/GoogleMapsView',
-        'PageView': 'views/PageView'
+        'PageView': 'views/PageView',
+        'SwitchesView': 'views/SwitchesView',
     },
     shim: {
         'backbone': {
@@ -71,6 +72,7 @@ function($, Backbone, ContentMediator, GlobalRouter) {
         Backbone.history.start({
             hashChange: false,
             pushState: true,
+            trigger: true,
         });
 
         // Credit: https://gist.github.com/tbranyen/1142129

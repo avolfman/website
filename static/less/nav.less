@@ -1,11 +1,10 @@
 // Nav
 
 .navList {
-    .f-adobeCaslonPro--regular();
-
-    font-size: @fontSize-jumbo;
     list-style-type: none;
     padding: 0;
+    margin-left: -1rem;
+    margin-top: -1.5rem;
 }
 
 .navList > li {
@@ -21,7 +20,13 @@
 .navList > li > a {
     .m-opacity(.5);
     .m-transition(opacity);
+    display: inline-block;
+    padding: 1.5rem 1rem 0;
     text-decoration: none;
+
+    .f-adobeCaslonPro--regular();
+    font-size: @fontSize-jumbo;
+    line-height: @lineHeight-jumbo;
 }
 .navList > li > a:hover,
 .navList > li.is-active > a {

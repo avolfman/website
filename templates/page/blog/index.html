@@ -1,14 +1,14 @@
 {% extends 'page/default.html' %}
 
 {% block panel_right %}
-    <div class="l-panel l-panel--right">
+    <div class="l-panel l-panel--right js-switches">
         <ul class="blocksList">
             {% for post in posts %}
-                <li class="js-switch">
+                <li class="js-switch borderExplodeTrigger">
                     <div class="u-scale--1-3"></div>
                     <div class="u-stretch">
                         <a href="{% url 'blog_post' slug=post.slug %}" class="blocksList-block"><span class="blocksList-cell">{{ post.title }}</span></a>
-                        <div style="background-color: {{ post.color }};" class="blocksList-border"></div>
+                        <div style="background-color: {{ post.color }};" class="borderExplode"></div>
                     </div>
                 </li>
             {% endfor %}

@@ -27,5 +27,5 @@ class IndexView(PageListView):
 class PostView(PageView):
     """View used to render blog post pages."""
     model = Post
-    template_name = 'page/blog/post.html'
+    template_name = 'page/blog/detail.html'
     context_object_name = 'page'

@@ -4,9 +4,6 @@ a {
     color: @color-black;
     text-decoration: none;
 }
-p a {
-    border-bottom: 3px solid @color-black;
-}
 
 body {
     background: @color-gray--bg;
@@ -24,8 +21,9 @@ h1,
 h2,
 h3 {
     .f-adobeCaslonPro--regular();
-
     font-size: @fontSize-jumbo;
+    line-height: @lineHeight-jumbo;
+    padding-top: 1.5rem;
 }
 
 html {
@@ -33,27 +31,22 @@ html {
 }
 @media (min-width: @mq-smMin) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
 @media (min-width: @mq-mdMin) {
     html {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
-@media (min-width: @mq-xlMin) {
+@media (min-width: @mq-xxlMin) {
     html {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 
 p {
     .f-roboto--regular();
-
     font-size: @fontSize-default;
-    line-height: 2.6rem;
-}
-.content--secondary p {
-    font-size: @fontSize-tiny;
-    line-height: 2.2rem;
+    line-height: @lineHeight-default;
 }

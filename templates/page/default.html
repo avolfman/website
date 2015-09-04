@@ -17,12 +17,18 @@
     <div class="js-page l-page is-entering">
         <div class="l-pageOverflowWrapper">
             {% block panel_left %}
-                <div class="js-panel l-panel l-panel--left">
+                <div class="js-panel l-panel l-panel--left contentPanel js-switches">
                     {% block nav %}{% include 'nav.html' %}{% endblock %}
-                    {% block page_title %}<h1 style="{% if page.color %}color: {{ page.color }};{% endif %}">{{ page.title }}</h1>{% endblock %}
-                    {% block page_content %}{% if page.content %}{{ page.content|safe|linebreaks }}{% endif %}{% endblock %}
+                    {% block page_title %}
+                        <div class="js-switch borderExplodeTrigger borderExplodeWrapper">
+                            <h1>{{ page.title }}</h1>
+                            <div class="borderExplode" style="background-color: {{ page.color }};"></div>
+                        </div>{% endblock %}
+                    {% block page_content %}
+                        {% if page.content %}<div class="contentWrapper">{{ page.content|safe|linebreaks }}</div>{% endif %}
+                    {% endblock %}
                     {% block page_content_secondary %}
-                        {% if page.content_secondary %}<div class="content--secondary">{{ page.content_secondary|safe|linebreaks }}</div>{% endif %}
+                        {% if page.content_secondary %}<div class="contentWrapper contentWrapper--secondary">{{ page.content_secondary|safe|linebreaks }}</div>{% endif %}
                     {% endblock %}
                 </div>
             {% endblock %}

@@ -16,13 +16,15 @@ function (app, Backbone, GoogleMapsView) {
     var GlobalRouter = Backbone.Router.extend({
         routes: {
             'contact/': 'contact',
+
             '*default': 'default',
         },
         contact: function (event) {
             this.announce({
-                subviews: [GoogleMapsView],
+                subviews: [GoogleMapsView]
             });
         },
+
         default: function (event) {
             this.announce();
         },

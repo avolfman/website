@@ -1,11 +1,11 @@
 {% extends 'page/default.html' %}
 
 {% block panel_right %}
-    <div class="l-panel l-panel--right">
+    <div class="l-panel l-panel--right js-switches">
         <ul class="blocksList g-row">
             {% for project in projects %}
                 {% if project.is_active and not project.github_link %}
-                    <li class="g-col g-col--4 g-col--smMin-6 g-col--mdMin-4 g-col--xlMin-3 js-switch">
+                    <li class="g-col g-col--4 g-col--smMin-6 g-col--mdMin-4 g-col--xlMin-3 borderExplodeTrigger js-switch">
                         <div class="u-scale--1-1"></div>
                         <div class="u-stretch">
                             {% if project.is_locked %}
@@ -14,7 +14,7 @@
                             {% else %}
                                 <a href="{% url 'project' slug=project.slug %}" class="blocksList-block" style="{% if project.logo %} background-image: url('{{ project.logo.url }}');{% endif %}"><span class="u-hideContent">{{ project.title }}</span></a>
                             {% endif %}
-                            <div style="background-color: {{ project.color }};" class="blocksList-border"></div>
+                            <div style="background-color: {{ project.color }};" class="borderExplode"></div>
                         </div>
                     </li>
                 {% endif %}
@@ -23,7 +23,7 @@
         <ul class="blocksList">
             {% for project in projects %}
                 {% if project.is_active and project.github_link %}
-                    <li class="js-switch">
+                    <li class="js-switch borderExplodeTrigger">
                         <div class="u-scale--1-3 u-scale--smMin-1-2 u-scale--mdMin-1-3 u-scale--xlMin-1-4"></div>
                         <div class="u-stretch">
                             <a href="{{ project.github_link }}" class="blocksList-block" target="_blank">
@@ -32,7 +32,7 @@
                                     {{ project.title }}
                                 </span>
                             </a>
-                            <div style="background-color: {{ project.color }};" class="blocksList-border"></div>
+                            <div style="background-color: {{ project.color }};" class="borderExplode"></div>
                         </div>
                     </li>
                 {% endif %}

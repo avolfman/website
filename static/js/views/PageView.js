@@ -16,13 +16,17 @@ function (app, $, Backbone) {
 
     var PageView = Backbone.View.extend({
         el: '.js-page',
+        events: {
+            'mouseenter .js-switch': 'toggleSwitchTarget',
+            'mouseleave .js-switch': 'toggleSwitchTarget',
+        },
         initialize: function (options) {
-            this.$switches = this.$('.js-switch');
             this.$panels = this.$('.js-panel');
             this.subviews = options.subviews;
             this.title = options.title;
 
             this.listenTo(app.vent, 'page:teardown', this.transitionOut);
+            this.on('transitionedIn', this.activateSwitches);
 
             this.render();
         },
@@ -35,7 +39,7 @@ function (app, $, Backbone) {
                 if (i == this.$panels.length) {
                     this.$el.removeClass('is-entering');
 
-                    this.activateSwitches();
+                    this.trigger('transitionedIn');
                 }
             }, this)).emulateTransitionEnd(app.TRANSITION_SPEED);
 
@@ -53,9 +57,14 @@ function (app, $, Backbone) {
             this.$el.addClass('is-exiting');
         },
         activateSwitches: function () {
-            this.$switches.each(function (i, el) {
+            this.$('.js-switch').each(function (i, el) {
                 setTimeout(function () { $(el).addClass('is-active'); }, 100 * i);
             });
+        },
+        toggleSwitchTarget: function (event) {
+            var switchTargetId = $(event.currentTarget).data('target');
+
+            if (switchTargetId && !Modernizr.touch) $('#' + switchTargetId).toggleClass('is-active');
         },
 
         render: function () {

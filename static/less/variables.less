@@ -7,14 +7,8 @@
 @color-black:           @color-black1;
 @color-black--opaque:   rgba(38, 38, 38, .25);
 
-// @color-gray1:   rgb(97, 97, 97); // #616161
-// @color-gray2:   rgb(128, 128, 128); // #808080
-// @color-gray3:   rgb(158, 158, 158); // #939393
-// @color-gray4:   rgb(191, 191, 191); // #bfbfbf
-// @color-gray5:   rgb(235, 233, 232); // #ebe9e8
-@color-gray6:   rgb(242, 241, 240); // #f2f1f0
-
-@color-gray--bg: @color-gray6;
+@color-gray:        rgb(242, 241, 240); // #f2f1f0
+@color-gray--bg:    @color-gray;
 
 @color-white:       rgb(255, 255, 255); // #FFFFFF
 @color-white--bg:   @color-white;
@@ -24,18 +18,23 @@
 @easing-inOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 @easing-default:    @easing-inOutCubic;
 
-@fontSize-tiny: 1.3em;
-@fontSize-default: 1.6em;
-@fontSize-jumbo: 3.2em;
+@fontSize-tiny: 1.3rem;
+@fontSize-default: 1.6rem;
+@fontSize-jumbo: 3.2rem;
 
-@mq-xsMax: 767px;
-@mq-smMin: (@mq-xsMax + 1);
-@mq-smMax: 1024px;
-@mq-mdMin: (@mq-smMax + 1);
-@mq-mdMax: 1280px;
-@mq-lgMin: (@mq-mdMax + 1);
-@mq-lgMax: 1440px;
-@mq-xlMin: (@mq-lgMax + 1);
+@lineHeight-default: 2.6rem;
+@lineHeight-jumbo: 4.0rem;
+
+@mq-xsMax:  767px;
+@mq-smMin:  (@mq-xsMax + 1);
+@mq-smMax:  1024px;
+@mq-mdMin:  (@mq-smMax + 1);
+@mq-mdMax:  1280px;
+@mq-lgMin:  (@mq-mdMax + 1);
+@mq-lgMax:  1440px;
+@mq-xlMin:  (@mq-lgMax + 1);
+@mq-xlMax:  1824px;
+@mq-xxlMin: (@mq-xlMax + 1);
 
 @speed-default:         .2s;
 @speed-defaultDelay:    0s;
