@@ -17,18 +17,16 @@
         <script>
             WebFont.load({
                 google: {
-                    families: ['Roboto:300:latin']
+                    families: ['Roboto:300,400:latin']
                 },
-                typekit: {
-                    id: 'htd8msx'
-                }
             });
         </script>
-    
+
         <script type="text/javascript" src="{% static MODERNIZR_PATH %}"></script>
     </head>
     <body>
         {% block content %}{% endblock %}
+
         {% if debug %}
             <div class="js-devGrid--4px devGrid devGrid--4px" style="display: none;"></div>
             <div class="js-devGrid--8px devGrid devGrid--8px" style="display: none;"></div>

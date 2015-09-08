@@ -1,7 +1,6 @@
 // Components
 
 .blocksList {
-    .f-adobeCaslonPro--regular();
     list-style-type: none;
     padding: 0;
 }
@@ -11,7 +10,7 @@
 .blocksList-block {
     .m-opacity(.5);
     .m-transition(all);
-    font-size: 2.4rem;
+    font-size: @fontSize-subhead;
     display: table;
     height: 100%;
     width: 100%;
@@ -30,15 +29,15 @@
 .blocksList-cell {
     display: table-cell;
     vertical-align: middle;
-    padding: 0 3.6rem;
+    padding: 0 3.2rem;
 }
 
 .borderExplode {
     .m-transform(scale(0, 1));
     .m-transitionTransform(.3s);
     background-color: @color-black;
-    bottom: 0;
-    height: 3px;
+    bottom: 1px;
+    height: 2px;
     left: 0;
     position: absolute;
     width: 100%;
@@ -52,19 +51,20 @@
     position: relative;
 }
 
-.contentWrapper {
-    padding-top: 2rem;
-}
-.contentWrapper--secondary {
-    padding-top: 0;
-}
-.contentWrapper--secondary p {
-    font-size: @fontSize-tiny;
-    line-height: 2.2rem;
+.contentPanel {
+    padding: 2.4rem 3.2rem 3.8rem;
 }
 
-.contentPanel {
-    padding: 4rem;
+.contentWrapper {
+    margin-top: -.1rem;
+}
+.contentWrapper--secondary {
+    margin-top: 1.5rem;
+}
+.contentWrapper--secondary p {
+    font-size: @fontSize-caption;
+    line-height: @lineHeight-caption;
+    margin-top: .8rem;
 }
 
 .mediaPanel {

@@ -6,8 +6,10 @@ a {
 }
 
 body {
+    .f-roboto--regular();
     background: @color-gray--bg;
     color: @color-black;
+    -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -20,10 +22,10 @@ p {
 h1,
 h2,
 h3 {
-    .f-adobeCaslonPro--regular();
-    font-size: @fontSize-jumbo;
-    line-height: @lineHeight-jumbo;
-    padding-top: 1.5rem;
+    .f-roboto--regular();
+    font-size: @fontSize-headline;
+    line-height: @lineHeight-headline;
+    padding-top: 1.6rem;
 }
 
 html {
@@ -46,7 +48,7 @@ html {
 }
 
 p {
-    .f-roboto--regular();
-    font-size: @fontSize-default;
-    line-height: @lineHeight-default;
+    font-size: @fontSize-body;
+    line-height: @lineHeight-body;
+    margin: 1.2rem 0 0;
 }

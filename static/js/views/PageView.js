@@ -68,17 +68,17 @@ function (app, $, Backbone) {
         },
 
         render: function () {
+            if (this.subviews) {
+                _.each(this.subviews, function (View, i, subviews) {
+                    subviews[i] = new View();
+                }, this);
+            }
+
             if (!$.contains(document.documentElement, this.$el[0])) {
                 $('body').prepend(this.$el);
                 document.title = this.title;
 
                 app.reflow(this.$el);
-            }
-
-            if (this.subviews) {
-                _.each(this.subviews, function (View, i, subviews) {
-                    subviews[i] = new View();
-                }, this);
             }
 
             this.transitionIn();
