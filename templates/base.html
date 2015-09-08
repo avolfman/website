@@ -29,6 +29,30 @@
     </head>
     <body>
         {% block content %}{% endblock %}
+        {% if debug %}
+            <div class="js-devGrid--4px devGrid devGrid--4px" style="display: none;"></div>
+            <div class="js-devGrid--8px devGrid devGrid--8px" style="display: none;"></div>
+
+            <script type="text/javascript">
+                var $devGrid4px = document.getElementsByClassName('js-devGrid--4px');
+                var $devGrid8px = document.getElementsByClassName('js-devGrid--8px');
+
+                document.addEventListener('keypress', function (event) {
+                    if (event.which == 52) {
+                        if ($devGrid4px[0].style.display === 'none') $devGrid4px[0].style.display = 'block';
+                        else $devGrid4px[0].style.display = 'none';
+
+                        $devGrid8px[0].style.display = 'none';
+                    }
+                    else if (event.which == 56) {
+                        if ($devGrid8px[0].style.display === 'none') $devGrid8px[0].style.display = 'block';
+                        else $devGrid8px[0].style.display = 'none';
+
+                        $devGrid4px[0].style.display = 'none';
+                    }
+                });
+            </script>
+        {% endif %}
 
         {% if REQUIREJS_BUILD %}
             <script type="text/javascript" src="{% static 'built/js/main.js' %}"></script>
