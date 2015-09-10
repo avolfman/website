@@ -68,8 +68,8 @@
 }
 
 .mediaPanel {
-    .m-opacity(0);
-    .m-transition(opacity);
+    .m-transitionTransform();
+    .m-transform(translate3d(100%, 0, 0));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -81,5 +81,17 @@
     bottom: 0;
 }
 .mediaPanel.is-active {
-    .m-opacity(1);
+    .m-transform(translate3d(0, 0, 0));
+}
+
+.mediaPanel-quoteWrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.mediaPanel-quoteWrapper blockquote {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 5.6rem;
 }

@@ -22,6 +22,7 @@ class MediaPanel(models.Model):
     bg_color = models.CharField(max_length=255, blank=True)
     bg_image = models.ImageField(upload_to='panels', blank=True)
     id_target = models.CharField(max_length=255, unique=True)
+    quotes = models.ManyToManyField('Quote', blank=True)
 
     def __str__(self):
         return self.id_target
@@ -64,3 +65,12 @@ class PageAbstract(models.Model):
 
 class Page(PageAbstract):
     pass
+
+
+@python_2_unicode_compatible
+class Quote(models.Model):
+    quote = models.TextField()
+    author = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.quote[:25] + '... said ' + self.author

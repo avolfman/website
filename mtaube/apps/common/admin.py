@@ -14,8 +14,9 @@
 
 from django.contrib import admin
 
-from mtaube.apps.common.models import MediaPanel, Page
+from mtaube.apps.common.models import MediaPanel, Page, Quote
 
 
-admin.site.register(Page)
 admin.site.register(MediaPanel)
+admin.site.register(Page)
+admin.site.register(Quote)

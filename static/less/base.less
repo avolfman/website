@@ -5,11 +5,28 @@ a {
     text-decoration: none;
 }
 
+blockquote,
+blockquote p {
+    color: @color-gray--bgText; 
+}
+blockquote p {
+    margin-bottom: .4rem;
+}
+
 body {
     .f-roboto--regular();
     background: @color-gray--bg;
     color: @color-black;
     -webkit-font-smoothing: antialiased;
+}
+
+cite {
+    font-size: 1.2rem;
+    margin-top: 1.2rem;
+}
+cite:before {
+    content: '\2013';
+    padding-right: 4px;
 }
 
 h1,
@@ -50,5 +67,6 @@ html {
 p {
     font-size: @fontSize-body;
     line-height: @lineHeight-body;
+    letter-spacing: .01rem;
     margin: 1.2rem 0 0;
 }

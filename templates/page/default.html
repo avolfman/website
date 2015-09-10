@@ -35,13 +35,13 @@
         
             {% block panel_right %}
                 <div class="l-panel l-panel--right l-panel--smMin-fixed">
+                    {% block panel_right_content %}{% endblock %}
                     {% if page.media_panel_default %}
                         {% include 'media_panel.html' with panel=page.media_panel_default is_default=True %}
                     {% endif %}
                     {% for panel in page.media_panels.all %}
                         {% include 'media_panel.html' with panel=panel %}
                     {% endfor %}
-                    {% block panel_right_content %}{% endblock %}
                 </div>
             {% endblock %}
         </div>

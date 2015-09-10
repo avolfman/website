@@ -1,1 +1,14 @@
-<div class="mediaPanel{% if is_default %} is-active{% else %} js-mediaPanel{% endif %}" style="background-color: {{ panel.bg_color }};{% if panel.bg_image %} background-image: url('{{ panel.bg_image.url }}');{% endif %}" id="{{ panel.id_target }}"></div>
+<div class="mediaPanel{% if is_default %} is-active{% else %} js-mediaPanel{% endif %}" style="background-color: {{ panel.bg_color }};{% if panel.bg_image %} background-image: url('{{ panel.bg_image.url }}');{% endif %}" id="{{ panel.id_target }}">
+    {% if panel.quotes.all %}
+        {% with quote=panel.quotes.all|random %}
+            <div class="mediaPanel-quoteWrapper">
+                <blockquote>
+                    <p>{{ quote.quote }}</p>
+                    {% if quote.author %}
+                        <cite>{{ quote.author }}</cite>
+                    {% endif %}
+                </blockquote>
+            </div>
+        {% endwith %}
+    {% endif %}
+</div>
