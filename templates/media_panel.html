@@ -2,13 +2,17 @@
     {% if panel.quotes.all %}
         {% with quote=panel.quotes.all|random %}
             <div class="mediaPanel-quoteWrapper">
-                <blockquote>
-                    <p>{{ quote.quote }}</p>
-                    {% if quote.author %}
-                        <cite>{{ quote.author }}</cite>
-                    {% endif %}
-                </blockquote>
+                <div class="mediaPanel-quote">
+                    <blockquote>
+                        {{ quote.quote|linebreaks }}
+                        {% if quote.author %}
+                            <cite>{{ quote.author }}</cite>
+                        {% endif %}
+                    </blockquote>
+                </div>
             </div>
         {% endwith %}
+    {% else %}
+        <div class="mediaPanel-overlay u-stretch"></div>
     {% endif %}
 </div>

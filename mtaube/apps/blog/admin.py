@@ -13,23 +13,23 @@
 # limitations under the License.
 
 from django.contrib import admin
-from django import forms
 
 from mtaube.apps.blog.models import Post
+from mtaube.apps.common.admin import PageForm
+from mtaube.apps.common.admin import PageAdmin
 
 
-class PostForm(forms.ModelForm):
+class PostForm(PageForm):
 
-    class Meta:
-        exclude = ['slug']
+    class Meta(PageForm.Meta):
         model = Post
 
 
-class PostAdmin(admin.ModelAdmin):
-    exclude = ['slug']
+class PostAdmin(PageAdmin):
     form = PostForm
     list_display = [
         'title',
+        'slug',
         'date',
         'is_active',
     ]

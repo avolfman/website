@@ -13,10 +13,32 @@
 # limitations under the License.
 
 from django.contrib import admin
+from django import forms
+
+from redactor.widgets import RedactorEditor
 
 from mtaube.apps.common.models import MediaPanel, Page, Quote
 
 
+class PageForm(forms.ModelForm):
+
+    class Meta:
+        exclude = ['slug']
+        model = Page
+        widgets = {
+            'content': RedactorEditor(),
+            'content_secondary': RedactorEditor()
+        }
+
+
+class PageAdmin(admin.ModelAdmin):
+    form = PageForm
+    list_display = [
+        'title',
+        'slug',
+    ]
+
+
 admin.site.register(MediaPanel)
-admin.site.register(Page)
+admin.site.register(Page, PageAdmin)
 admin.site.register(Quote)

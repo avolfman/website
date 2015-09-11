@@ -25,10 +25,10 @@
                             <div class="borderExplode" style="background-color: {{ page.color }};"></div>
                         </div>{% endblock %}
                     {% block page_content %}
-                        {% if page.content %}<div class="contentWrapper">{{ page.content|safe|linebreaks }}</div>{% endif %}
+                        {% if page.content %}<div class="contentWrapper">{{ page.content|safe }}</div>{% endif %}
                     {% endblock %}
                     {% block page_content_secondary %}
-                        {% if page.content_secondary %}<div class="contentWrapper contentWrapper--secondary">{{ page.content_secondary|safe|linebreaks }}</div>{% endif %}
+                        {% if page.content_secondary %}<div class="contentWrapper contentWrapper--secondary">{{ page.content_secondary|safe }}</div>{% endif %}
                     {% endblock %}
                 </div>
             {% endblock %}

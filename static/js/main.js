@@ -21,6 +21,7 @@ require.config({
         'jquery.easing': 'lib/jquery.easing',
         'jquery.scrollTo': 'lib/jquery.scrollTo',
         'jquery.transition': 'lib/jquery.transition',
+        'prettify': 'lib/prettify',
         'underscore': 'lib/underscore',
 
         // modules
@@ -33,7 +34,7 @@ require.config({
         // views
         'GoogleMapsView': 'views/GoogleMapsView',
         'PageView': 'views/PageView',
-        'SwitchesView': 'views/SwitchesView',
+        'PrettifyView': 'views/PrettifyView',
     },
     shim: {
         'backbone': {
@@ -43,6 +44,7 @@ require.config({
         'jquery.easing': { deps: ['jquery'] },
         'jquery.scrollTo': { deps: ['jquery', 'jquery.easing'] },
         'jquery.transition': { deps: ['jquery'] },
+        'prettify': { exports: 'prettyPrint' },
         'underscore': { exports: '_' },
     },
 });

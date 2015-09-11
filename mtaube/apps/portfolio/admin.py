@@ -13,24 +13,24 @@
 # limitations under the License.
 
 from django.contrib import admin
-from django import forms
 
 from mtaube.apps.portfolio.models import Project
+from mtaube.apps.common.admin import PageForm
+from mtaube.apps.common.admin import PageAdmin
 
 
-class ProjectForm(forms.ModelForm):
+class ProjectForm(PageForm):
 
-    class Meta:
-        exclude = ['slug']
+    class Meta(PageForm.Meta):
         model = Project
 
 
-class ProjectAdmin(admin.ModelAdmin):
-    exclude = ['slug']
+class ProjectAdmin(PageAdmin):
     form = ProjectForm
     list_display = [
         'title',
         'client_name',
+        'slug',
         'is_active',
         'is_locked',
         'order',
