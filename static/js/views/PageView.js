@@ -58,7 +58,17 @@ function (app, $, Backbone) {
         },
         activateSwitches: function () {
             this.$('.js-switch').each(function (i, el) {
-                setTimeout(function () { $(el).addClass('is-active'); }, 100 * i);
+                var $el = $(el);
+                var $switchTarget = $();
+                var switchTargetId = $el.data('target');
+
+                setTimeout(function () { $el.addClass('is-active'); }, 100 * i);
+
+                if (switchTargetId && !Modernizr.touch) {
+                    $switchTarget = $('#' + switchTargetId);
+
+                    $switchTarget.css('background-image', 'url("' + $switchTarget.data('img') + '")');
+                }
             });
         },
         toggleSwitchTarget: function (event) {
