@@ -18,6 +18,7 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: @color-transparent;
 }
 .no-touch a.blocksList-block:hover {
     background-color: @color-black--opaque;
@@ -72,7 +73,7 @@
 }
 
 .mediaPanel {
-    .m-transitionTransform();
+    .m-transitionTransform(@speed-panel);
     .m-transform(translate3d(100%, 0, 0));
     background-size: cover;
     background-position: center;
@@ -103,6 +104,15 @@
     display: table-cell;
     vertical-align: middle;
     padding: 0 5.6rem;
+    color: @color-gray--bgText;
+}
+.no-touch .mediaPanel-quote {
+    .m-transition(all);
+    .m-transform(scale(1));
+}
+.no-touch .mediaPanel:hover .mediaPanel-quote {
+    .m-transform(scale(1.1));
+    color: @color-gray;
 }
 
 // lib 

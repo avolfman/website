@@ -5,10 +5,6 @@ a {
     text-decoration: none;
 }
 
-blockquote,
-blockquote p {
-    color: @color-gray--bgText; 
-}
 blockquote {
     margin: 0 auto;
     max-width: 420px;
@@ -35,13 +31,6 @@ cite:before {
 
 h1,
 h2,
-h3,
-p {
-    color: @color-black1;
-}
-
-h1,
-h2,
 h3 {
     .f-roboto--regular();
     font-size: @fontSize-headline;
@@ -51,6 +40,7 @@ h3 {
 
 html {
     font-size: 10px;
+    color: @color-black;
 }
 @media (min-width: @mq-smMin) {
     html {
