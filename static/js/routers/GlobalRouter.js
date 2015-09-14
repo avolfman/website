@@ -6,17 +6,15 @@ define(
     'backbone',
 
     // views
-    'GoogleMapsView',
     'PrettifyView',
 ],
 
-function (app, Backbone, GoogleMapsView, PrettifyView) {
+function (app, Backbone, PrettifyView) {
 
     'use strict';
 
     var GlobalRouter = Backbone.Router.extend({
         routes: {
-            'contact/': 'contact',
             'words/:post/': 'blogPost',
 
             '*default': 'default',
@@ -24,11 +22,6 @@ function (app, Backbone, GoogleMapsView, PrettifyView) {
         blogPost: function () {
             this.announce({
                 subviews: [PrettifyView]
-            });
-        },
-        contact: function (event) {
-            this.announce({
-                // subviews: [GoogleMapsView]
             });
         },
 

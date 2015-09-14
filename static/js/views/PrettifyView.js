@@ -13,11 +13,6 @@ function ($, Backbone, Prettify) {
     var PrettifyView = Backbone.View.extend({
         el: '.js-prettify',
         initialize: function () {
-            this.$el.find('pre').addClass('prettyprint linenums');
-
-            this.render();
-        },
-        render: function () {
             Prettify();
         },
     });

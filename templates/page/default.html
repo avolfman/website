@@ -23,7 +23,8 @@
                         <div class="js-switch borderExplodeTrigger borderExplodeWrapper">
                             <h1>{{ page.title }}</h1>
                             <div class="borderExplode" style="background-color: {{ page.color }};"></div>
-                        </div>{% endblock %}
+                        </div>
+                    {% endblock %}
                     {% block page_content %}
                         {% if page.content %}<div class="contentWrapper">{{ page.content|safe }}</div>{% endif %}
                     {% endblock %}

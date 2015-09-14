@@ -1,16 +1,33 @@
 // Base
 
 a {
+    color: @color-black--link;
+}
+.no-touch a:hover {
     color: @color-black;
-    text-decoration: none;
 }
 
 blockquote {
-    margin: 0 auto;
-    max-width: 420px;
+    color: @color-black3;
+    margin: 2.8rem auto;
+    max-width: 480px;
+    padding: 0 2rem;
 }
-blockquote p {
-    margin-bottom: 1rem;
+blockquote cite,
+blockquote p,
+ol,
+ul {
+    font-size: @fontSize-caption;
+    line-height: @lineHeight-caption;
+}
+
+code {
+    background: @color-gray--codeBg;
+    border-radius: 3px;
+    border: 1px solid @color-gray--bgBorder;
+    font-size: 1rem;
+    margin: 0 4px;
+    padding: .4rem .6rem;
 }
 
 body {
@@ -21,8 +38,7 @@ body {
 }
 
 cite {
-    font-size: 1.2rem;
-    margin-top: 1.2rem;
+    display: block;
 }
 cite:before {
     content: '\2013';
@@ -33,9 +49,19 @@ h1,
 h2,
 h3 {
     .f-roboto--regular();
+    padding-top: 1.6rem;
+}
+h1 {
     font-size: @fontSize-headline;
     line-height: @lineHeight-headline;
-    padding-top: 1.6rem;
+}
+h2 {
+    font-size: @fontSize-subhead;
+    line-height: @lineHeight-subhead;
+}
+h3 {
+    font-size: @fontSize-subsubhead;
+    line-height: @lineHeight-subsubhead;
 }
 
 html {
@@ -62,9 +88,14 @@ img {
     max-width: 100%;
 }
 
+ol,
+p,
+ul {
+    margin: 1.2rem 0 0;
+}
+
 p {
     font-size: @fontSize-body;
     line-height: @lineHeight-body;
     letter-spacing: .01rem;
-    margin: 1.2rem 0 0;
 }

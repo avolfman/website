@@ -1,10 +1,15 @@
 {% extends 'page/default.html' %}
 
-{% block page_content %}{% endblock %}
+{% block page_content %}
+    <div class="contentWrapper">
+        <p>{{ page.date|date:"Y-m-d" }}</p>
+    </div>
+{% endblock %}
 {% block page_content_secondary %}{% endblock %}
 
 {% block panel_right %}
     <div class="js-panel l-panel l-panel--right contentPanel js-prettify">
         {% if page.content %}{{ page.content|safe }}{% endif %}
+        {% if page.content_secondary %}<div class="contentWrapper contentWrapper--secondary">{{ page.content_secondary|safe }}</div>{% endif %}
     </div>
 {% endblock %}

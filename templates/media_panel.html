@@ -1,9 +1,9 @@
 <div class="mediaPanel{% if is_default %} is-active{% else %} js-mediaPanel{% endif %}" data-img="{% if panel.bg_image %}{{ panel.bg_image.url }}{% endif %}" style="background-color: {{ panel.bg_color }};{% if is_default and panel.bg_image %}background-image:url('{{ panel.bg_image.url }}');{% endif %}" id="{{ panel.id_target }}">
     {% if panel.quotes.all %}
         {% with quote=panel.quotes.all|random %}
-            <div class="mediaPanel-quoteWrapper">
-                <div class="mediaPanel-quote">
-                    <blockquote>
+            <div class="u-table">
+                <div class="u-tableCell">
+                    <blockquote class="mediaPanel-blockquote">
                         {{ quote.quote|linebreaks }}
                         {% if quote.author %}
                             <cite>{{ quote.author }}</cite>
