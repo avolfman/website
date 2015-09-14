@@ -44,8 +44,10 @@ from fabric.api import runs_once
 from fabric.api import sudo
 from fabric.api import task
 
-from mtaube.settings import VIRTUALENV_NAME
 from mtaube.settings.staging import HOSTS as HOSTS_STAGING
+from mtaube.settings.staging import VIRTUALENV_NAME as VIRTUALENV_STAGING
+from mtaube.settings.prod import HOSTS as HOSTS_PROD
+from mtaube.settings.prod import VIRTUALENV_NAME as VIRTUALENV_PROD
 
 
 # General Settings
@@ -54,7 +56,12 @@ env.colorize_errors = True
 env.roledefs = {
     'dev': [],
     'staging': {
-        'hosts': HOSTS_STAGING
+        'hosts': HOSTS_STAGING,
+        'virtualenv': VIRTUALENV_STAGING
+    },
+    'prod': {
+        'hosts': HOSTS_PROD,
+        'virtualenv': VIRTUALENV_PROD
     },
 }
 
@@ -64,7 +71,9 @@ env.roledefs = {
 @contextmanager
 def virtualenv():
     """Prefix with the virtualenv's activate command"""
-    with prefix('workon %s' % VIRTUALENV_NAME):
+    virtualenv = env.roledefs[env.effective_roles[0]]['virtualenv']
+
+    with prefix('workon %s' % virtualenv):
         yield
 
 

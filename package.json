@@ -21,6 +21,6 @@
     "grunt-contrib-less": "^1.0.1",
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-modernizr": "^0.6.0"
+    "grunt-modernizr": "git@github.com:metaloha/grunt-modernizr.git#v2-fallback"
   }
 }
