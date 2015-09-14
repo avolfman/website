@@ -27,3 +27,7 @@ class CachedS3BotoStorage(
 ):
     """Custom S3 storage with MD5 fingerprinting."""
     pass
+
+
+StaticCachedS3BotoStorage = lambda: CachedS3BotoStorage(location='static')
+MediaS3BotoStorage = lambda: S3BotoStorage(location='media')
