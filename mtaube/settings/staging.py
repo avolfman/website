@@ -45,8 +45,9 @@ VIRTUALENV_NAME = 'lacy_staging'
 AWS_S3_CUSTOM_DOMAIN = 'storage.staging.mtaube.com'
 AWS_STORAGE_BUCKET_NAME = 'storage.staging.mtaube.com'
 
-DEFAULT_FILE_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
+DEFAULT_FILE_STORAGE = 'mtaube.apps.common.storages.MediaS3BotoStorage'
+STATICFILES_STORAGE = 'mtaube.apps.common.storages.StaticCachedS3BotoStorage'
 
-STATICFILES_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
-
-STATIC_URL = 'http://storage.staging.mtaube.com/'
+S3_URL = 'http://storage.staging.mtaube.com'
+STATIC_URL = '%s/static/' % S3_URL
+MEDIA_URL = '%s/media/' % S3_URL
