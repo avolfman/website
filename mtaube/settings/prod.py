@@ -17,7 +17,7 @@
 Inherits the base settings and staging-specific secret settings. Used as
 DJANGO_SETTINGS_MODULE whenever:
 
-DJANGO_ENV='staging'
+DJANGO_ENV='prod'
 """
 
 from mtaube.settings.base import *
@@ -30,23 +30,25 @@ except ImportError:
 
 # General Settings
 
-ALLOWED_HOSTS = ['staging.mtaube.com']
+ALLOWED_HOSTS = ['www.mtaube.com']
 
-DEBUG = True
+DEBUG = False
 
 HOSTS = ['ubuntu@54.153.8.86']
 
-VIRTUALENV_NAME = 'lacy_staging'
+PREPEND_WWW = True
+
+VIRTUALENV_NAME = 'lacy_prod'
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-AWS_S3_CUSTOM_DOMAIN = 'storage.staging.mtaube.com'
-AWS_STORAGE_BUCKET_NAME = 'storage.staging.mtaube.com'
+AWS_S3_CUSTOM_DOMAIN = 'storage.mtaube.com'
+AWS_STORAGE_BUCKET_NAME = 'storage.mtaube.com'
 
 DEFAULT_FILE_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 
 STATICFILES_STORAGE = 'mtaube.apps.common.storages.CachedS3BotoStorage'
 
-STATIC_URL = 'http://storage.staging.mtaube.com/'
+STATIC_URL = 'http://storage.mtaube.com/'
