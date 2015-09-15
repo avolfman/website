@@ -54,6 +54,7 @@ define(
     // lib
     'jquery',
     'backbone',
+    'underscore',
 
     // modules
     'ContentMediator',
@@ -62,7 +63,7 @@ define(
     'GlobalRouter',
 ],
 
-function($, Backbone, ContentMediator, GlobalRouter) {
+function($, Backbone, _, ContentMediator, GlobalRouter) {
 
     'use strict';
 
@@ -97,9 +98,11 @@ function($, Backbone, ContentMediator, GlobalRouter) {
                 event.preventDefault();
 
                 // Note by using Backbone.history.navigate, router events will not be
-                // triggered.  If this is a problem, change this to navigate on your
+                // triggered. If this is a problem, change this to navigate on your
                 // router.
                 Backbone.history.navigate(href.attr, true);
+
+                if (_.isFunction(window.ga)) window.ga('set', 'pageview', href.attr);
             }
         });
     }
