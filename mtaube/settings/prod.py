@@ -30,9 +30,11 @@ except ImportError:
 
 # General Settings
 
-ALLOWED_HOSTS = ['www.mtaube.com']
+ALLOWED_HOSTS = ['mtaube.com', 'www.mtaube.com']
 
 DEBUG = False
+
+COMMON_GOOGLE_ANALYTICS_CODE = 'UA-67612628-1'
 
 HOSTS = ['ubuntu@54.153.8.86']
 

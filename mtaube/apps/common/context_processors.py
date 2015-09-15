@@ -14,8 +14,17 @@
 
 """Django context processors for mtaube project."""
 
+from mtaube.apps.common.conf import GOOGLE_ANALYTICS_CODE
 from mtaube.apps.common.conf import MODERNIZR_BUILD
 from mtaube.apps.common.conf import REQUIREJS_BUILD
+
+
+def google(request):
+    """Adds RequireJS-related context variables to the context."""
+
+    return {
+        'GOOGLE_ANALYTICS_CODE': GOOGLE_ANALYTICS_CODE
+    }
 
 
 def modernizr(request):

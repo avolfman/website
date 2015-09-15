@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils import timezone
 
@@ -25,3 +26,6 @@ class Post(PageAbstract):
 
     class Meta:
         ordering = ['-date']
+
+    def get_absolute_url(self):
+        return reverse('blog_post', kwargs={'slug': self.slug})

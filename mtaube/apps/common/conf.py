@@ -20,5 +20,10 @@ All custom settings here may be overriden like any other Django settings.
 from django.conf import settings
 
 
+GOOGLE_ANALYTICS_CODE = getattr(
+    settings,
+    'COMMON_GOOGLE_ANALYTICS_CODE',
+    False
+)
 MODERNIZR_BUILD = getattr(settings, 'COMMON_MODERNIZR_BUILD', True)
 REQUIREJS_BUILD = getattr(settings, 'COMMON_REQUIREJS_BUILD', True)

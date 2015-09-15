@@ -18,9 +18,13 @@ Dependent Modules
 This code has the following dependencies
 above and beyond the Python standard library:
 
+nodeenv
+
 Django
 Fabric
 MySQL-python
+Pillow
 
 boto
+django-wysiwyg-redactor
 django-storages

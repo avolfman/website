@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
 
     'redactor',
@@ -92,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'mtaube.apps.common.context_processors.google',
                 'mtaube.apps.common.context_processors.modernizr',
                 'mtaube.apps.common.context_processors.requirejs',
             ],

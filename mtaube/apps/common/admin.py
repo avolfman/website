@@ -21,6 +21,7 @@ from mtaube.apps.common.models import MediaPanel, Page, Quote
 
 
 class PageForm(forms.ModelForm):
+    """Base ModelForm for Page and all subclasses"""
 
     class Meta:
         exclude = ['slug']
@@ -32,6 +33,7 @@ class PageForm(forms.ModelForm):
 
 
 class PageAdmin(admin.ModelAdmin):
+    """Base ModelAdmin for Page and all subclasses"""
     form = PageForm
     list_display = [
         'title',
