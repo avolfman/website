@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'icomoon';
+    src:url('/static/fonts/icomoon/icomoon.eot?nyma4y');
+    src:url('/static/fonts/icomoon/icomoon.eot?#iefixnyma4y') format('embedded-opentype'),
+        url('/static/fonts/icomoon/icomoon.ttf?nyma4y') format('truetype'),
+        url('/static/fonts/icomoon/icomoon.woff?nyma4y') format('woff'),
+        url('/static/fonts/icomoon/icomoon.svg?nyma4y#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-lock:before {
+    content: "\e2ab";
+}
+.icon-lock_open:before {
+    content: "\e2ac";
+}
+.icon-lock_outline:before {
+    content: "\e2ad";
+}
+.icon-visibility:before {
+    content: "\e306";
+}
+.icon-visibility_off:before {
+    content: "\e307";
+}
+.icon-key:before {
+    content: "\e98d";
+}
+.icon-lock2:before {
+    content: "\e98f";
+}
+.icon-glass:before {
+    content: "\e9a0";
+}
+.icon-glass2:before {
+    content: "\e9a1";
+}
+.icon-mug:before {
+    content: "\e9a2";
+}
+.icon-github:before {
+    content: "\eab1";
+}
+.icon-github2:before {
+    content: "\eab2";
+}
+.icon-github3:before {
+    content: "\eab3";
+}
+.icon-github4:before {
+    content: "\eab4";
+}
+.icon-github5:before {
+    content: "\eab5";
+}
+.icon-linkedin:before {
+    content: "\eac8";
+}
+.icon-linkedin2:before {
+    content: "\eac9";
+}

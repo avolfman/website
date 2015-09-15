@@ -1,0 +1,31 @@
+// Nav
+
+.navList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navList > li {
+    display: none;
+    position: relative;
+}
+.navList > li.is-activePrefix,
+.navList > li.is-always,
+.navList--displayAll > li {
+    display: block;
+}
+
+.navList > li > a {
+    .m-opacity(.5);
+    .m-transition(opacity);
+    display: inline-block;
+    text-decoration: none;
+
+    .f-roboto--light();
+    font-size: @fontSize-display;
+    line-height: @lineHeight-display;
+}
+.navList > li > a:hover,
+.navList > li.is-active > a {
+    .m-opacity(1);
+}

@@ -1,0 +1,26 @@
+{
+  "name": "mtaube.com",
+  "version": "0.1.0",
+  "description": "Matt Taube's personal website.",
+  "main": "N/A",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtaube/mtaube.com.git"
+  },
+  "author": "Matt Taube",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mtaube/mtaube.com/issues"
+  },
+  "homepage": "https://github.com/mtaube/mtaube.com#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.0.1",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-modernizr": "git@github.com:metaloha/grunt-modernizr.git#v2-fallback"
+  }
+}

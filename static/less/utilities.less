@@ -1,0 +1,50 @@
+// Utilities
+
+.u-color--black { color: @color-black; }
+.u-color--white { color: @color-white; }
+
+.u-clearfix { .m-clearfix(); }
+
+.u-disabled {
+    color: @color-gray--bgText;
+}
+
+.u-hideContent {
+    border: 0;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.m-scale(~'');
+@media (min-width: @mq-smMin) { .m-scale(~'smMin-'); }
+@media (min-width: @mq-mdMin) { .m-scale(~'mdMin-'); }
+@media (min-width: @mq-lgMin) { .m-scale(~'lgMin-'); }
+@media (min-width: @mq-xlMin) { .m-scale(~'xlMin-'); }
+
+.u-stretch {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.u-strike {
+    text-decoration: line-through;
+}
+
+.u-table {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.u-tableCell {
+    display: table-cell;
+    vertical-align: middle;
+}

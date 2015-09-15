@@ -1,0 +1,50 @@
+{% extends base_template %}
+{% load nav %}
+
+{% block title %}
+    {% if page.meta_title %}
+        {{ page.meta_title }}
+    {% else %}
+        {{ page.title }}
+    {% endif %}
+{% endblock %}
+
+{% block description %}{{ page.meta_description }}{% endblock %}
+{% block keywords %}{{ page.meta_keywords }}{% endblock %}
+
+
+{% block content %}
+    <div class="js-page l-page is-entering">
+        <div class="l-pageOverflowWrapper">
+            {% block panel_left %}
+                <div class="js-panel l-panel l-panel--left contentPanel js-switches">
+                    {% block nav %}{% include 'nav.html' %}{% endblock %}
+                    {% block page_title %}
+                        <div class="js-switch borderExplodeTrigger borderExplodeWrapper">
+                            <h1>{{ page.title }}</h1>
+                            <div class="borderExplode" style="background-color: {{ page.color }};"></div>
+                        </div>
+                    {% endblock %}
+                    {% block page_content %}
+                        {% if page.content %}<div class="contentWrapper">{{ page.content|safe }}</div>{% endif %}
+                    {% endblock %}
+                    {% block page_content_secondary %}
+                        {% if page.content_secondary %}<div class="contentWrapper contentWrapper--secondary">{{ page.content_secondary|safe }}</div>{% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        
+            {% block panel_right %}
+                <div class="l-panel l-panel--right l-panel--smMin-fixed">
+                    {% block panel_right_content %}{% endblock %}
+                    {% if page.media_panel_default %}
+                        {% include 'media_panel.html' with panel=page.media_panel_default is_default=True %}
+                    {% endif %}
+                    {% for panel in page.media_panels.all %}
+                        {% include 'media_panel.html' with panel=panel %}
+                    {% endfor %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

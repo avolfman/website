@@ -1,0 +1,101 @@
+// Base
+
+a {
+    color: @color-black--link;
+}
+.no-touch a:hover {
+    color: @color-black;
+}
+
+blockquote {
+    color: @color-black3;
+    margin: 2.8rem auto;
+    max-width: 480px;
+    padding: 0 2rem;
+}
+blockquote cite,
+blockquote p,
+ol,
+ul {
+    font-size: @fontSize-caption;
+    line-height: @lineHeight-caption;
+}
+
+code {
+    background: @color-gray--codeBg;
+    border-radius: 3px;
+    border: 1px solid @color-gray--bgBorder;
+    font-size: 1rem;
+    margin: 0 4px;
+    padding: .4rem .6rem;
+}
+
+body {
+    .f-roboto--regular();
+    background: @color-gray--bg;
+    color: @color-black;
+    -webkit-font-smoothing: antialiased;
+}
+
+cite {
+    display: block;
+}
+cite:before {
+    content: '\2013';
+    padding-right: 4px;
+}
+
+h1,
+h2,
+h3 {
+    .f-roboto--regular();
+    padding-top: 1.6rem;
+}
+h1 {
+    font-size: @fontSize-headline;
+    line-height: @lineHeight-headline;
+}
+h2 {
+    font-size: @fontSize-subhead;
+    line-height: @lineHeight-subhead;
+}
+h3 {
+    font-size: @fontSize-subsubhead;
+    line-height: @lineHeight-subsubhead;
+}
+
+html {
+    font-size: 10px;
+    color: @color-black;
+}
+@media (min-width: @mq-smMin) {
+    html {
+        font-size: 12px;
+    }
+}
+@media (min-width: @mq-mdMin) {
+    html {
+        font-size: 14px;
+    }
+}
+@media (min-width: @mq-xxlMin) {
+    html {
+        font-size: 18px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+ol,
+p,
+ul {
+    margin: 1.2rem 0 0;
+}
+
+p {
+    font-size: @fontSize-body;
+    line-height: @lineHeight-body;
+    letter-spacing: .01rem;
+}

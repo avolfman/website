@@ -1,0 +1,64 @@
+// Layout
+
+.l-page {
+    position: relative;
+}
+.l-page.is-active { z-index: 1; }
+.l-page.is-exiting { z-index: 0; }
+.l-page.is-entering {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.l-pageOverflowWrapper {
+    overflow-x: hidden;
+}
+
+.l-panel {
+    .m-transition(all, @speed-panel);
+    .m-transform(translate3d(-100%, 0, 0));
+    position: relative;
+}
+.is-active .l-panel {
+    .m-opacity(1);
+    .m-transform(translate3d(0, 0, 0));
+}
+.is-exiting .l-panel {
+    .m-opacity(0);
+}
+
+.l-panel--left {
+    .m-boxShadow(0px 3px 3px -2px @color-black--opaque);
+    z-index: 1;
+    background: @color-white--bg;
+    left: 0;
+}
+.l-panel--right {
+    min-height: 200px;
+    position: relative;
+    background: @color-gray--bg;
+    right: 0;
+}
+
+@media (min-width: @mq-smMin) {
+    .l-panel {
+        width: 50%;
+    }
+
+    .l-panel--left,
+    .l-panel--smMin-fixed {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        overflow-y: scroll;
+    }
+    .l-panel--left {
+        .m-boxShadow(3px 0px 3px -2px @color-black--opaque);
+    }
+    .l-panel--right {
+        margin-left: 50%;
+        .m-transform(translate3d(100%, 0, 0));
+    }
+    .l-panel--smMin-fixed { overflow: hidden; }
+}
