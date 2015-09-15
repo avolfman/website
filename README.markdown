@@ -1,5 +1,6 @@
-# [mtaube.com](http://www.mtaube.com)
 # [mtaube.com](http://www.mtaube.com) v1.0.0
+
+For an overview of the project architecture and tools used, check out [my blog post](http://www.mtaube.com/words/mtaubecom-v100/) about it.
 
 ## Installation
 
@@ -37,11 +38,11 @@ Using virtualenv and virtualenvwrapper is highly recommended. The virtualenv can
 
 4. Configure Django settings
 
-    Settings can be configured on a per-environment basis. There has been [much discussion](https://code.djangoproject.com/wiki/SplitSettings) on the best way to do it, see the [settings module initialization](mtaube/settings/__init__.py) for this project's implementation and required environment variables. It is recommended to set and unset the variables in the ``activate`` hook provided by [virtualenv](https://virtualenv.pypa.io/en/latest/).
+    Settings can be configured on a per-environment basis. Check out [my blog post](http://www.mtaube.com/words/modular-django-settings/) about it to see how this project's setting package works.
 
     See [Django's settings documentation](https://docs.djangoproject.com/en/1.8/ref/settings/) for all possible configurations.
 
-5. Initialize the database tables
+5. Initialize the database tables (make sure database exists and Django database settings are correct)
 
     ```
     python manage.py migrate
