@@ -24,6 +24,7 @@ DJANGO_SETTINGS_MODULE='mtaube.settings'
 DJANGO_ENV='dev'
 
 For more information on this topic, see:
+http://www.mtaube.com/words/modular-django-settings/
 https://code.djangoproject.com/wiki/SplitSettings
 https://code.djangoproject.com/wiki/SplitSettings#DevelopmentMachineDependantSettingsConfiguration
 """

@@ -102,7 +102,7 @@ function($, Backbone, _, ContentMediator, GlobalRouter) {
                 // router.
                 Backbone.history.navigate(href.attr, true);
 
-                if (_.isFunction(window.ga)) window.ga('set', 'pageview', href.attr);
+                if (_.isFunction(window.ga)) window.ga('send', 'pageview', href.attr);
             }
         });
     }
