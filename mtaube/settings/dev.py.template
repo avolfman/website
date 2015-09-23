@@ -38,7 +38,12 @@ ALLOWED_HOSTS = ['localhost']
 
 DEBUG = True
 
+INTERNAL_IPS = ['127.0.0.1']
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+COMMON_MODERNIZR_BUILD = False
+COMMON_REQUIREJS_BUILD = False
 
 STATIC_URL = '/static/'
