@@ -45,9 +45,7 @@ function (app, Backbone, _, PageView) {
             $.ajax({
                 dataType: 'json',
                 beforeSend: function () { app.vent.trigger('page:teardown'); },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    debugger;
-                },
+                error: function (jqXHR, textStatus, errorThrown) {},
                 success: $.proxy(function (data, textStatus, jqXHR) {
                     _.extend(this.pageViewOptions, data, { el: data.html })
 
