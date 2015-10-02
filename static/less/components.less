@@ -40,7 +40,7 @@
     .m-transitionTransform(.3s);
     background-color: @color-black;
     bottom: 0;
-    height: 2px;
+    height: 3px;
     left: 0;
     position: absolute;
     width: 100%;
@@ -127,6 +127,18 @@ a.borderExplodeWrapper {
 .mediaPanel-overlay {
     background-image: url('/static/img/grid--overlay@2x.png');
     background-size: 48px 48px;
+}
+
+.progress {
+    left: 0;
+    background-color: @color-black;
+    width: 3px;
+    position: fixed;
+    top: 0;
+    height: 0%;
+}
+@media (min-width: @mq-smMin) {
+    .progress { left: 50%; }
 }
 
 // lib 

@@ -1,5 +1,7 @@
 {% extends 'page/default.html' %}
 
+{% block content_extra %}<div class="progress js-scrollProgressBar" style="background-color: {{ page.color }};"></div>{% endblock %}
+
 {% block page_content %}
     <div class="contentWrapper">
         <p>{{ page.date|date:"Y-m-d" }}</p>

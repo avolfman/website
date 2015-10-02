@@ -35,6 +35,7 @@ require.config({
         'GoogleMapsView': 'views/GoogleMapsView',
         'PageView': 'views/PageView',
         'PrettifyView': 'views/PrettifyView',
+        'ScrollProgressView': 'views/ScrollProgressView',
     },
     shim: {
         'backbone': {
