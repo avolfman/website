@@ -1,4 +1,4 @@
-# [mtaube.com](http://www.mtaube.com) v1.0.2
+# [mtaube.com](http://www.mtaube.com) v1.1.0
 
 For an overview of the project architecture and tools used, check out [my blog post](http://www.mtaube.com/words/mtaubecom-v100/) about it.
 
