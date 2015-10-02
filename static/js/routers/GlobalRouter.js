@@ -7,9 +7,10 @@ define(
 
     // views
     'PrettifyView',
+    'ScrollProgressView'
 ],
 
-function (app, Backbone, PrettifyView) {
+function (app, Backbone, PrettifyView, ScrollProgressView) {
 
     'use strict';
 
@@ -21,7 +22,7 @@ function (app, Backbone, PrettifyView) {
         },
         blogPost: function () {
             this.announce({
-                subviews: [PrettifyView]
+                subviews: [PrettifyView, ScrollProgressView]
             });
         },
 

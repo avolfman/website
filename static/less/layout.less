@@ -3,8 +3,8 @@
 .l-page {
     position: relative;
 }
-.l-page.is-active { z-index: 1; }
-.l-page.is-exiting { z-index: 0; }
+.l-page.is-active { z-index: @zIndex--bump; }
+.l-page.is-exiting { z-index: @zIndex--base; }
 .l-page.is-entering {
     position: absolute;
     top: 0;
@@ -30,7 +30,7 @@
 
 .l-panel--left {
     .m-boxShadow(0px 3px 3px -2px @color-black--opaque);
-    z-index: 1;
+    z-index: @zIndex--bump;
     background: @color-white--bg;
     left: 0;
 }
