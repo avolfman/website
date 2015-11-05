@@ -19,13 +19,13 @@ from mtaube.apps.blog.models import Post
 
 class IndexView(PageListView):
     """View used to render blog index page."""
-    model = Post
+    queryset = Post.objects.filter(is_active=True)
     template_name = 'page/blog/index.html'
     context_object_name = 'posts'
 
 
 class PostView(PageView):
     """View used to render blog post pages."""
-    model = Post
+    queryset = Post.objects.filter(is_active=True)
     template_name = 'page/blog/detail.html'
     context_object_name = 'page'

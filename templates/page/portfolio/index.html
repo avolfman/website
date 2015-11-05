@@ -4,7 +4,7 @@
     <div class="l-panel l-panel--right js-switches">
         <ul class="blocksList g-row">
             {% for project in projects %}
-                {% if project.is_active and not project.github_link %}
+                {% if not project.github_link %}
                     <li class="g-col g-col--4 g-col--smMin-6 g-col--mdMin-4 g-col--xlMin-3 borderExplodeTrigger js-switch">
                         <div class="u-scale--1-1"></div>
                         <div class="u-stretch">
@@ -22,7 +22,7 @@
         </ul>
         <ul class="blocksList">
             {% for project in projects %}
-                {% if project.is_active and project.github_link %}
+                {% if project.github_link %}
                     <li class="js-switch borderExplodeTrigger">
                         <div class="u-scale--1-3 u-scale--smMin-1-2 u-scale--mdMin-1-3 u-scale--xlMin-1-4"></div>
                         <div class="u-stretch">

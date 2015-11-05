@@ -19,12 +19,12 @@ from mtaube.apps.portfolio.models import Project
 
 class IndexView(PageListView):
     """View used to render portfolio page."""
-    model = Project
+    queryset = Project.objects.filter(is_active=True)
     template_name = 'page/portfolio/index.html'
     context_object_name = 'projects'
 
 
 class ProjectView(PageView):
     """View used to render project pages."""
-    model = Project
+    queryset = Project.objects.filter(is_active=True)
     context_object_name = 'page'
